@@ -21,9 +21,9 @@ Class Phone
 Class Tag
 Class Grade
 Class Subject
-Class DateTime
 Class Attendance
 Class Payment
+Class DateTime
 
 Class I #FFFFFF
 }
@@ -49,9 +49,9 @@ Person *--> Address
 Person *--> "*" Tag
 Person *-> Grade
 Person *-> Subject
-Person *--> "*" DateTime
 Person *-> Attendance
 Person *-> Payment
+Person *--> "*" DateTime
 
 Person -[hidden]up--> I
 Name -[hidden]-> Grade
@@ -66,4 +66,3 @@ Address -[hidden]right-> Email
 
 ModelManager --> "~* filtered" Person
 @enduml
-
