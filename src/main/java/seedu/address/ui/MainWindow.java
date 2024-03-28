@@ -83,7 +83,6 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
-        //viewWindow = new ViewWindow(new Stage(), logic);
         viewWindow = new ViewWindow(logic);
     }
 
@@ -142,15 +141,6 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
-    @FXML
-    public void handleView() {
-        if (!viewWindow.isShowing()) {
-            viewWindow.show();
-        } else {
-            viewWindow.focus();
-        }
-    }
-
     /**
      * Sets the default size based on {@code guiSettings}.
      */
@@ -175,6 +165,15 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    @FXML
+    public void handleView() {
+        if (!viewWindow.isShowing()) {
+            viewWindow.show();
+        } else {
+            viewWindow.focus();
+        }
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -187,6 +186,7 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
+        viewWindow.hide();
         helpWindow.hide();
         primaryStage.hide();
     }
@@ -206,10 +206,11 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            //handleView();
-
             if (commandResult.isShowHelp()) {
-                //handleHelp();
+                handleHelp();
+            }
+
+            if (commandResult.isView()) {
                 handleView();
             }
 

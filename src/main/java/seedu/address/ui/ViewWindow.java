@@ -97,7 +97,7 @@ public class ViewWindow extends UiPart<Stage> {
         double spacingH = calendar.getHgap();
         double spacingV = calendar.getVgap();
 
-        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> MapDaysToSessions = createSessionMap(dateFocus);
+        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> mapDaysToSessions = createSessionMap(dateFocus);
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
 
@@ -132,7 +132,7 @@ public class ViewWindow extends UiPart<Stage> {
                         date.setTranslateY(textTranslationY);
                         stackPane.getChildren().add(date);
 
-                        TreeSet<Pair<Person, List<Integer>>> tutorSessions = MapDaysToSessions.get(currentDate);
+                        TreeSet<Pair<Person, List<Integer>>> tutorSessions = mapDaysToSessions.get(currentDate);
                         if (tutorSessions != null) {
                             createSessionsOnDay(tutorSessions, rectangleHeight, rectangleWidth, stackPane);
                         }
@@ -187,7 +187,7 @@ public class ViewWindow extends UiPart<Stage> {
         List<Person> persons = logic.getFilteredPersonList();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
-        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> MapDaysToSessions = new HashMap<>();
+        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> mapDaysToSessions = new HashMap<>();
 
         for (Person person: persons) {
             Set<DateTime> dateTimes = person.getDateTimes();
@@ -205,15 +205,15 @@ public class ViewWindow extends UiPart<Stage> {
                 }
 
                 if (year == dateFocus.getYear() && month == dateFocus.getMonthValue()) {
-                    TreeSet<Pair<Person, List<Integer>>> sessionSet = MapDaysToSessions.computeIfAbsent(day,
+                    TreeSet<Pair<Person, List<Integer>>> sessionSet = mapDaysToSessions.computeIfAbsent(day,
                             k -> new TreeSet<>(new HourMinuteComparator()));
                     Pair<Person, List<Integer>> personAndTime = Pair.of(person, List.of(hour, minute));
                     sessionSet.add(personAndTime);
-                    MapDaysToSessions.put(day, sessionSet);
+                    mapDaysToSessions.put(day, sessionSet);
                 }
             }
         }
-        return MapDaysToSessions;
+        return mapDaysToSessions;
     }
 
     private static class HourMinuteComparator implements Comparator<Pair<Person, List<Integer>>> {
