@@ -21,4 +21,6 @@ Person *--> Address
 Person *--> Grade
 Person *--> Subject
 Person *--> "*" DateTime
+Person *--> Attendance
+Person *--> Payment
 @enduml
