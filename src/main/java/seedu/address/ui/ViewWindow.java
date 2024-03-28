@@ -147,7 +147,7 @@ public class ViewWindow extends UiPart<Stage> {
     }
 
     private void createSessionsOnDay(TreeSet<Pair<Person, List<Integer>>> tutorSessions, double rectangleHeight,
-                                        double rectangleWidth, StackPane stackPane) {
+                                     double rectangleWidth, StackPane stackPane) {
         VBox sessionsBox = new VBox();
         for (Pair<Person, List<Integer>> personAndTime : tutorSessions) {
             Person person = personAndTime.getLeft();
