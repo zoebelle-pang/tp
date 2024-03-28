@@ -30,13 +30,15 @@ import seedu.address.logic.Logic;
 import seedu.address.model.person.DateTime;
 import seedu.address.model.person.Person;
 
+/**
+ * Controller for a view schedule page
+ */
 public class ViewWindow extends UiPart<Stage> {
-    LocalDateTime dateFocus;
-    LocalDateTime today;
-    private final Logic logic;
-
     private static final Logger logger = LogsCenter.getLogger(ViewWindow.class);
     private static final String FXML = "Calendar.fxml";
+    private final Logic logic;
+    private LocalDateTime dateFocus;
+    private LocalDateTime today;
 
     @FXML
     private Text year;
@@ -47,6 +49,9 @@ public class ViewWindow extends UiPart<Stage> {
     @FXML
     private FlowPane calendar;
 
+    /**
+     * Creates a {@code viewWindow} with the given {@code Stage} and {@code Logic}.
+     */
     public ViewWindow(Stage root, Logic logic) {
         super(FXML, root);
         this.logic = logic;
@@ -59,6 +64,24 @@ public class ViewWindow extends UiPart<Stage> {
         this(new Stage(), logic);
     }
 
+    /**
+     * Shows the view schedule window.
+     * @throws IllegalStateException
+     *     <ul>
+     *         <li>
+     *             if this method is called on a thread other than the JavaFX Application Thread.
+     *         </li>
+     *         <li>
+     *             if this method is called during animation or layout processing.
+     *         </li>
+     *         <li>
+     *             if this method is called on the primary stage.
+     *         </li>
+     *         <li>
+     *             if {@code dialogStage} is already showing.
+     *         </li>
+     *     </ul>
+     */
     public void show() {
         logger.fine("Showing schedule.");
         getRoot().show();
@@ -91,7 +114,7 @@ public class ViewWindow extends UiPart<Stage> {
         drawCalendar();
     }
 
-    private void drawCalendar(){
+    private void drawCalendar() {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
 
@@ -105,11 +128,11 @@ public class ViewWindow extends UiPart<Stage> {
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
 
-        if(dateFocus.getYear() % 4 != 0 && monthMaxDate == 29){
+        if (dateFocus.getYear() % 4 != 0 && monthMaxDate == 29) {
             monthMaxDate = 28;
         }
 
-        int dateOffset = LocalDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1,0,0,0,0)
+        int dateOffset = LocalDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1, 0, 0, 0, 0)
                 .getDayOfWeek().getValue();
 
         for (int i = 0; i < 6; i++) {
@@ -141,8 +164,8 @@ public class ViewWindow extends UiPart<Stage> {
                             createSessionsOnDay(tutorSessions, rectangleHeight, rectangleWidth, stackPane);
                         }
                     }
-                    if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() &&
-                            today.getDayOfMonth() == currentDate) {
+                    if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth()
+                            && today.getDayOfMonth() == currentDate) {
                         rectangle.setStroke(Color.BLUE);
                     }
                 }
