@@ -5,7 +5,6 @@ import org.apache.commons.lang3.tuple.Pair;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -98,7 +97,7 @@ public class ViewWindow extends UiPart<Stage> {
         double spacingH = calendar.getHgap();
         double spacingV = calendar.getVgap();
 
-        Map<Integer, List<Person>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
+        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
 
@@ -133,7 +132,7 @@ public class ViewWindow extends UiPart<Stage> {
                         date.setTranslateY(textTranslationY);
                         stackPane.getChildren().add(date);
 
-                        List<Person> calendarActivities = calendarActivityMap.get(currentDate);
+                        TreeSet<Pair<Person, List<Integer>>> calendarActivities = calendarActivityMap.get(currentDate);
                         if (calendarActivities != null) {
                             createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
                         }
@@ -147,28 +146,26 @@ public class ViewWindow extends UiPart<Stage> {
         }
     }
 
-    private void createCalendarActivity(List<Person> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
+    private void createCalendarActivity(TreeSet<Pair<Person, List<Integer>>> calendarActivities, double rectangleHeight,
+                                        double rectangleWidth, StackPane stackPane) {
         VBox calendarActivityBox = new VBox();
-        for (int k = 0; k < calendarActivities.size(); k++) {
-            DateTime dateTimeStr = calendarActivities.get(k).getDateTimes();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-            LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr.value, formatter);
-            int hour = dateTime.getHour();
-            int minute = dateTime.getMinute();
-            Text text = new Text("Name: " + calendarActivities.get(k).getName() + "\n" + "Address: "
-                    + calendarActivities.get(k).getAddress() + "\n" + "Subject: "
-                    + calendarActivities.get(k).getSubject() + "\n");
-            text.setFont(Font.font("Segoe UI Light", FontWeight.THIN, 12)); // Set font to Garamond, bold, size 14
-            text.setStroke(Color.WHITE); // Set stroke color to black
-            text.setStrokeWidth(1); // Increase stroke width for a thicker appearance
-            text.setFill(Color.WHITE); // Set text color to blue
+        for (Pair<Person, List<Integer>> personAndTime : calendarActivities) {
+            Person person = personAndTime.getLeft();
+            List<Integer> hourAndMinute = personAndTime.getRight();
+            String min = hourAndMinute.get(1) < 10 ? "0" + hourAndMinute.get(1) : "" + hourAndMinute.get(1);
+            Text text = new Text("Name: " + person.getName() + "\n" + "Address: " + person.getAddress()
+                    + "\n" + "Subject: " + person.getSubject() + "\n" + "Time: "
+                    + hourAndMinute.get(0) + ":" + min + "\n");
+            text.setFont(Font.font("Segoe UI Light", FontWeight.THIN, 12));
+            text.setStroke(Color.WHITE);
+            text.setStrokeWidth(1);
+            text.setFill(Color.WHITE);
 
-            text.setWrappingWidth(rectangleWidth*0.9);
+            text.setWrappingWidth(rectangleWidth * 0.9);
 
 
             calendarActivityBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
-                //On Text clicked
                 System.out.println(text.getText());
             });
         }
@@ -186,11 +183,11 @@ public class ViewWindow extends UiPart<Stage> {
 
     }
 
-    private Map<Integer, List<Person>> getCalendarActivitiesMonth(LocalDateTime dateFocus) {
+    private Map<Integer, TreeSet<Pair<Person, List<Integer>>>> getCalendarActivitiesMonth(LocalDateTime dateFocus) {
         List<Person> calendarActivities = logic.getFilteredPersonList();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
-        Map<Integer, List<Person>> calendarActivityMap = new HashMap<>();
+        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> calendarActivityMap = new HashMap<>();
 
         for (Person person: calendarActivities) {
             Set<DateTime> activityDate = person.getDateTimes();
@@ -203,25 +200,33 @@ public class ViewWindow extends UiPart<Stage> {
                 int hour = dateTime.getHour();
                 int minute = dateTime.getMinute();
 
-                if (year > dateFocus.getYear() && month > dateFocus.getMonthValue()) {
+                if (year > dateFocus.getYear() || (year == dateFocus.getYear() && month > dateFocus.getMonthValue())) {
                     break;
                 }
 
                 if (year == dateFocus.getYear() && month == dateFocus.getMonthValue()) {
-
-                    if (!calendarActivityMap.containsKey(day)) {
-                        //calendarActivityMap.put(day, List.of(person));
-                        calendarActivityMap.put(day, Pair.of(List.of(person), List.of(hour, minute)));
-                    } else {
-                        List<Person> OldListByDate = calendarActivityMap.get(day);
-
-                        List<Person> newList = new ArrayList<>(OldListByDate);
-                        newList.add(person);
-                        calendarActivityMap.put(day, newList);
-                    }
+                    TreeSet<Pair<Person, List<Integer>>> dayActivities = calendarActivityMap.computeIfAbsent(day,
+                            k -> new TreeSet<>(new HourMinuteComparator()));
+                    Pair<Person, List<Integer>> personAndTime = Pair.of(person, List.of(hour, minute));
+                    dayActivities.add(personAndTime);
+                    calendarActivityMap.put(day, dayActivities);
                 }
             }
         }
         return calendarActivityMap;
+    }
+
+    private static class HourMinuteComparator implements Comparator<Pair<Person, List<Integer>>> {
+        @Override
+        public int compare(Pair<Person, List<Integer>> pair1, Pair<Person, List<Integer>> pair2) {
+            int hour1 = pair1.getRight().get(0);
+            int minute1 = pair1.getRight().get(1);
+            int hour2 = pair2.getRight().get(0);
+            int minute2 = pair2.getRight().get(1);
+            if (hour1 != hour2) {
+                return Integer.compare(hour1, hour2);
+            }
+            return Integer.compare(minute1, minute2);
+        }
     }
 }
