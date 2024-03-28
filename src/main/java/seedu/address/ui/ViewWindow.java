@@ -97,7 +97,7 @@ public class ViewWindow extends UiPart<Stage> {
         double spacingH = calendar.getHgap();
         double spacingV = calendar.getVgap();
 
-        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
+        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> MapDaysToSessions = createSessionMap(dateFocus);
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
 
@@ -132,9 +132,9 @@ public class ViewWindow extends UiPart<Stage> {
                         date.setTranslateY(textTranslationY);
                         stackPane.getChildren().add(date);
 
-                        TreeSet<Pair<Person, List<Integer>>> calendarActivities = calendarActivityMap.get(currentDate);
-                        if (calendarActivities != null) {
-                            createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
+                        TreeSet<Pair<Person, List<Integer>>> tutorSessions = MapDaysToSessions.get(currentDate);
+                        if (tutorSessions != null) {
+                            createSessionsOnDay(tutorSessions, rectangleHeight, rectangleWidth, stackPane);
                         }
                     }
                     if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate) {
@@ -146,10 +146,10 @@ public class ViewWindow extends UiPart<Stage> {
         }
     }
 
-    private void createCalendarActivity(TreeSet<Pair<Person, List<Integer>>> calendarActivities, double rectangleHeight,
+    private void createSessionsOnDay(TreeSet<Pair<Person, List<Integer>>> tutorSessions, double rectangleHeight,
                                         double rectangleWidth, StackPane stackPane) {
-        VBox calendarActivityBox = new VBox();
-        for (Pair<Person, List<Integer>> personAndTime : calendarActivities) {
+        VBox sessionsBox = new VBox();
+        for (Pair<Person, List<Integer>> personAndTime : tutorSessions) {
             Person person = personAndTime.getLeft();
             List<Integer> hourAndMinute = personAndTime.getRight();
             String min = hourAndMinute.get(1) < 10 ? "0" + hourAndMinute.get(1) : "" + hourAndMinute.get(1);
@@ -164,17 +164,17 @@ public class ViewWindow extends UiPart<Stage> {
             text.setWrappingWidth(rectangleWidth * 0.9);
 
 
-            calendarActivityBox.getChildren().add(text);
+            sessionsBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
                 System.out.println(text.getText());
             });
         }
-        calendarActivityBox.setStyle("-fx-background-color: #515658; -fx-background-radius: 5;");
-        calendarActivityBox.setMaxWidth(rectangleWidth);
-        calendarActivityBox.setAlignment(Pos.TOP_LEFT);
+        sessionsBox.setStyle("-fx-background-color: #515658; -fx-background-radius: 5;");
+        sessionsBox.setMaxWidth(rectangleWidth);
+        sessionsBox.setAlignment(Pos.TOP_LEFT);
 
         ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setContent(calendarActivityBox);
+        scrollPane.setContent(sessionsBox);
         scrollPane.setFitToWidth(true);
         scrollPane.setPrefSize(rectangleWidth, rectangleHeight);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -183,16 +183,16 @@ public class ViewWindow extends UiPart<Stage> {
 
     }
 
-    private Map<Integer, TreeSet<Pair<Person, List<Integer>>>> getCalendarActivitiesMonth(LocalDateTime dateFocus) {
-        List<Person> calendarActivities = logic.getFilteredPersonList();
+    private Map<Integer, TreeSet<Pair<Person, List<Integer>>>> createSessionMap(LocalDateTime dateFocus) {
+        List<Person> persons = logic.getFilteredPersonList();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
-        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> calendarActivityMap = new HashMap<>();
+        Map<Integer, TreeSet<Pair<Person, List<Integer>>>> MapDaysToSessions = new HashMap<>();
 
-        for (Person person: calendarActivities) {
-            Set<DateTime> activityDate = person.getDateTimes();
+        for (Person person: persons) {
+            Set<DateTime> dateTimes = person.getDateTimes();
 
-            for (DateTime dateTimeStr : activityDate) {
+            for (DateTime dateTimeStr : dateTimes) {
                 LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr.value, formatter);
                 int year = dateTime.getYear();
                 int month = dateTime.getMonthValue();
@@ -205,15 +205,15 @@ public class ViewWindow extends UiPart<Stage> {
                 }
 
                 if (year == dateFocus.getYear() && month == dateFocus.getMonthValue()) {
-                    TreeSet<Pair<Person, List<Integer>>> dayActivities = calendarActivityMap.computeIfAbsent(day,
+                    TreeSet<Pair<Person, List<Integer>>> sessionSet = MapDaysToSessions.computeIfAbsent(day,
                             k -> new TreeSet<>(new HourMinuteComparator()));
                     Pair<Person, List<Integer>> personAndTime = Pair.of(person, List.of(hour, minute));
-                    dayActivities.add(personAndTime);
-                    calendarActivityMap.put(day, dayActivities);
+                    sessionSet.add(personAndTime);
+                    MapDaysToSessions.put(day, sessionSet);
                 }
             }
         }
-        return calendarActivityMap;
+        return MapDaysToSessions;
     }
 
     private static class HourMinuteComparator implements Comparator<Pair<Person, List<Integer>>> {
