@@ -18,11 +18,11 @@ Class Address
 Class Email
 Class Name
 Class Phone
-Class Attendance
-Class Payment
 Class Tag
 Class Grade
 Class Subject
+Class Attendance
+Class Payment
 
 Class I #FFFFFF
 }
@@ -45,22 +45,22 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
-Person *--> Attendance
-Person *--> Payment
 Person *--> "*" Tag
 Person *-> Grade
 Person *-> Subject
+Person *-> Attendance
+Person *-> Payment
 
 Person -[hidden]up--> I
 Name -[hidden]-> Grade
 Phone -[hidden]-> Subject
+Address -[hidden]-> Attendance
+Email -[hidden]-> Payment
 UniquePersonList -[hidden]right-> I
 
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address
 Address -[hidden]right-> Email
-Email -[hidden]right-> Attendance
-Attendance -[hidden]right-> Payment
 
 ModelManager --> "~* filtered" Person
 @enduml
