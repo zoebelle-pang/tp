@@ -1,5 +1,15 @@
 package seedu.address.ui;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.logging.Logger;
+
 import org.apache.commons.lang3.tuple.Pair;
 
 import javafx.event.ActionEvent;
@@ -19,12 +29,6 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.model.person.DateTime;
 import seedu.address.model.person.Person;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.logging.Logger;
-
 
 public class ViewWindow extends UiPart<Stage> {
     LocalDateTime dateFocus;
@@ -116,19 +120,19 @@ public class ViewWindow extends UiPart<Stage> {
                 rectangle.setFill(Color.TRANSPARENT);
                 rectangle.setStroke(Color.WHITE);
                 rectangle.setStrokeWidth(strokeWidth);
-                double rectangleWidth = (calendarWidth/7) - strokeWidth - spacingH;
+                double rectangleWidth = (calendarWidth / 7) - strokeWidth - spacingH;
                 rectangle.setWidth(rectangleWidth);
-                double rectangleHeight = (calendarHeight/6) - strokeWidth - spacingV;
+                double rectangleHeight = (calendarHeight / 6) - strokeWidth - spacingV;
                 rectangle.setHeight(rectangleHeight);
                 stackPane.getChildren().add(rectangle);
 
-                int calculatedDate = (j+1)+(7*i);
+                int calculatedDate = (j + 1) + (7 * i);
                 if (calculatedDate > dateOffset) {
                     int currentDate = calculatedDate - dateOffset;
                     if (currentDate <= monthMaxDate) {
                         Text date = new Text(String.valueOf(currentDate));
                         date.setFill(Color.WHITE);
-                        double textTranslationY = - (rectangleHeight / 2) * 0.75;
+                        double textTranslationY = -(rectangleHeight / 2) * 0.75;
                         date.setTranslateY(textTranslationY);
                         stackPane.getChildren().add(date);
 
@@ -137,7 +141,8 @@ public class ViewWindow extends UiPart<Stage> {
                             createSessionsOnDay(tutorSessions, rectangleHeight, rectangleWidth, stackPane);
                         }
                     }
-                    if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate) {
+                    if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() &&
+                            today.getDayOfMonth() == currentDate) {
                         rectangle.setStroke(Color.BLUE);
                     }
                 }
