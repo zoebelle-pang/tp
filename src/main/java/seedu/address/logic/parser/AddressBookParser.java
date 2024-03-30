@@ -72,14 +72,14 @@ public class AddressBookParser {
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
-
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
         case ViewCommand.COMMAND_WORD:
             return new ViewCommand();
+
+        case ExitCommand.COMMAND_WORD:
+            return new ExitCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
