@@ -48,6 +48,7 @@ FilterCommand --> LogicManager : commandResult
 deactivate FilterCommand
 FilterCommand -[hidden]-> LogicManager : commandResult
 destroy FilterCommand
+destroy GradeSubjectFilterPredicate
 
 [<--LogicManager
 deactivate LogicManager

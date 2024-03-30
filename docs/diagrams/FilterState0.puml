@@ -4,7 +4,7 @@ skinparam ClassFontColor #000000
 skinparam ClassBorderColor #000000
 skinparam ClassBackgroundColor #FFFFAA
 
-title FilteredList state
+title FilteredList
 
 package Predicates {
     class State1 as "<u>Model.PREDICATE_SHOW_ALL_PERSONS</u>"
