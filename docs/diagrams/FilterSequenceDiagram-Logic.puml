@@ -1,0 +1,54 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":FilterCommand" as FilterCommand LOGIC_COLOR
+participant ":GradeSubjectFilterPredicate" as GradeSubjectFilterPredicate LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+[-> LogicManager : execute(filter g/...)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand()
+activate AddressBookParser
+
+create GradeSubjectFilterPredicate
+AddressBookParser -> GradeSubjectFilterPredicate
+activate GradeSubjectFilterPredicate
+
+GradeSubjectFilterPredicate --> AddressBookParser
+deactivate GradeSubjectFilterPredicate
+
+create FilterCommand
+AddressBookParser -> FilterCommand
+activate FilterCommand
+
+FilterCommand --> AddressBookParser
+deactivate FilterCommand
+
+AddressBookParser --> LogicManager
+deactivate AddressBookParser
+
+LogicManager -> FilterCommand : execute()
+activate FilterCommand
+
+FilterCommand -> Model : updateFilteredPersonList(predicate)
+activate Model
+
+Model --> FilterCommand
+deactivate Model
+
+FilterCommand --> LogicManager : commandResult
+deactivate FilterCommand
+FilterCommand -[hidden]-> LogicManager : commandResult
+destroy FilterCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

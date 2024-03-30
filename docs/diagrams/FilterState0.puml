@@ -1,0 +1,18 @@
+@startuml
+!include style.puml
+skinparam ClassFontColor #000000
+skinparam ClassBorderColor #000000
+skinparam ClassBackgroundColor #FFFFAA
+
+title FilteredList state
+
+package Predicates {
+    class State1 as "<u>Model.PREDICATE_SHOW_ALL_PERSONS</u>"
+    class State2 as "<u>:GradeSubjectFilterPredicate</u>"
+}
+State1 -[hidden]right-> State2
+hide State2
+
+class Pointer as "Current State" #FFFFFF
+Pointer -up-> State1
+@end
