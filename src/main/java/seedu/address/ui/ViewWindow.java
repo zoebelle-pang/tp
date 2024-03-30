@@ -126,19 +126,13 @@ public class ViewWindow extends UiPart<Stage> {
 
         Map<Integer, TreeSet<Pair<Person, List<Integer>>>> mapDaysToSessions = createSessionMap(dateFocus);
 
-        int monthMaxDate = dateFocus.getMonth().maxLength();
-
-        if (dateFocus.getYear() % 4 != 0 && monthMaxDate == 29) {
-            monthMaxDate = 28;
-        }
-
+        int monthMaxDate = getMonthMaxDate();
         int dateOffset = LocalDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1, 0, 0, 0, 0)
                 .getDayOfWeek().getValue();
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 StackPane stackPane = new StackPane();
-
                 Rectangle rectangle = new Rectangle();
                 rectangle.setFill(Color.TRANSPARENT);
                 rectangle.setStroke(Color.WHITE);
@@ -188,14 +182,8 @@ public class ViewWindow extends UiPart<Stage> {
             text.setStroke(Color.WHITE);
             text.setStrokeWidth(1);
             text.setFill(Color.WHITE);
-
             text.setWrappingWidth(rectangleWidth * 0.9);
-
-
             sessionsBox.getChildren().add(text);
-            text.setOnMouseClicked(mouseEvent -> {
-                System.out.println(text.getText());
-            });
         }
         sessionsBox.setStyle("-fx-background-color: #515658; -fx-background-radius: 5;");
         sessionsBox.setMaxWidth(rectangleWidth);
@@ -242,6 +230,14 @@ public class ViewWindow extends UiPart<Stage> {
             }
         }
         return mapDaysToSessions;
+    }
+
+    private int getMonthMaxDate() {
+        int monthMaxDate = dateFocus.getMonth().maxLength();
+        if (dateFocus.getYear() % 4 != 0 && monthMaxDate == 29) {
+            monthMaxDate = 28;
+        }
+        return monthMaxDate;
     }
 
     private static class HourMinuteComparator implements Comparator<Pair<Person, List<Integer>>> {
