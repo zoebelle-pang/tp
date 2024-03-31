@@ -176,7 +176,7 @@ public class UniquePersonAndDateTimeListTest {
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-            -> uniquePersonandDateTimeList.asUnmodifiableObservableList().remove(0));
+                -> uniquePersonandDateTimeList.asUnmodifiableObservableList().remove(0));
     }
 
     @Test
