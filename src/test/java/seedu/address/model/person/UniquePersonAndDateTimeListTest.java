@@ -130,7 +130,8 @@ public class UniquePersonAndDateTimeListTest {
 
     @Test
     public void setPersons_nullUniquePersonList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniquePersonandDateTimeList.setPersons((UniquePersonAndDateTimeList) null));
+        assertThrows(NullPointerException.class, () -> uniquePersonandDateTimeList
+                .setPersons((UniquePersonAndDateTimeList) null));
     }
 
     @Test
@@ -160,7 +161,8 @@ public class UniquePersonAndDateTimeListTest {
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
         List<Person> listWithDuplicatePersons = Arrays.asList(ALICE, ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniquePersonandDateTimeList.setPersons(listWithDuplicatePersons));
+        assertThrows(DuplicatePersonException.class, () -> uniquePersonandDateTimeList
+                .setPersons(listWithDuplicatePersons));
     }
 
     @Test
@@ -181,6 +183,7 @@ public class UniquePersonAndDateTimeListTest {
 
     @Test
     public void toStringMethod() {
-        assertEquals(uniquePersonandDateTimeList.asUnmodifiableObservableList().toString(), uniquePersonandDateTimeList.toString());
+        assertEquals(uniquePersonandDateTimeList.asUnmodifiableObservableList().toString(),
+                uniquePersonandDateTimeList.toString());
     }
 }
