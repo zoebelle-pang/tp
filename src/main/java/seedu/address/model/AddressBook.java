@@ -72,7 +72,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public boolean hasDateTime(Person person) {
         requireNonNull(person);
-        return persons.contains_DateTime(person);
+        return persons.containsDateTime(person);
     }
 
     /**

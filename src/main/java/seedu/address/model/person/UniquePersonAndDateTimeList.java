@@ -17,8 +17,8 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
  * A person is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating of
  * persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
- * unique in terms of identity in the UniquePersonAndDateTimeList. However, the removal of a person uses Person#equals(Object) so
- * as to ensure that the person with exactly the same fields will be removed.
+ * unique in terms of identity in the UniquePersonAndDateTimeList. However, the removal of a person uses
+ * Person#equals(Object) so as to ensure that the person with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -41,7 +41,7 @@ public class UniquePersonAndDateTimeList implements Iterable<Person> {
     /**
      * Returns true if the list contains an equivalent DateTime as the given argument.
      */
-    public boolean contains_DateTime(Person toCheck) {
+    public boolean containsDateTime(Person toCheck) {
         requireNonNull(toCheck);
         Set<DateTime> toCheckDateTime = toCheck.getDateTimes();
 
@@ -61,7 +61,7 @@ public class UniquePersonAndDateTimeList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
 
-        if (contains_DateTime(toAdd)) {
+        if (containsDateTime(toAdd)) {
             throw new DuplicateDateTimeException();
         }
         internalList.add(toAdd);
