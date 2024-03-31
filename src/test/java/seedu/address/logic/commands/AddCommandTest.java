@@ -62,8 +62,8 @@ public class AddCommandTest {
         Person bob = new PersonBuilder().withName("Bob").withDateTimes("2024-03-02 1800").build();
         ModelStub modelStub = new ModelStubWithPerson(bob);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_DATETIME,
-                () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_DATETIME, () -> addCommand
+                .execute(modelStub));
     }
 
     @Test
