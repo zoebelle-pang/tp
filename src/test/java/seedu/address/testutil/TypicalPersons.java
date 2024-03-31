@@ -31,11 +31,11 @@ public class TypicalPersons {
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPhone("98765432")
             .withTags("owesMoney", "friends")
-            .withDateTimes("2024-02-03 1800")
+            .withDateTimes("2024-02-03 1600")
             .withGrade("A").withSubject("English").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withAddress("wall street")
-            .withDateTimes("2024-02-03 1800")
+            .withDateTimes("2024-02-03 1700")
             .withGrade("A").withSubject("English").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withAddress("10th street")
@@ -44,15 +44,15 @@ public class TypicalPersons {
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
             .withEmail("werner@example.com").withAddress("michegan ave")
             .withGrade("A").withSubject("English")
-            .withDateTimes("2024-02-03 1800").build();
+            .withDateTimes("2024-02-03 1900").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withEmail("lydia@example.com").withAddress("little tokyo")
             .withGrade("A").withSubject("English")
-            .withDateTimes("2024-02-03 1800").build();
+            .withDateTimes("2024-02-03 2000").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withAddress("4th street")
             .withGrade("A").withSubject("English")
-            .withDateTimes("2024-02-03 1800").build();
+            .withDateTimes("2024-02-03 2100").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
