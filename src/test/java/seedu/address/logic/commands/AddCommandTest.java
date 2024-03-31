@@ -56,6 +56,16 @@ public class AddCommandTest {
     }
 
     @Test
+    public void execute_duplicateDateTime_throwsCommandException() {
+        Person alice = new PersonBuilder().withName("Alice").withDateTimes("2024-03-02 1800").build();
+        AddCommand addCommand = new AddCommand(alice);
+        Person bob = new PersonBuilder().withName("Bob").withDateTimes("2024-03-02 1800").build();
+        ModelStub modelStub = new ModelStubWithPerson(bob);
+
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_DATETIME, () -> addCommand.execute(modelStub));
+    }
+
+    @Test
     public void equals() {
         Person alice = new PersonBuilder().withName("Alice").build();
         Person bob = new PersonBuilder().withName("Bob").build();
