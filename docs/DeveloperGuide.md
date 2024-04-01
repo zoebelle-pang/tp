@@ -155,6 +155,62 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Filter Command
+
+#### Implementation
+
+The Address book filter is made with `GradeSubjectFilterPredicate`. It extends from `Predicate` functional interface and is used to set as a condition to check that for each student, the `Grade` and `Subject` specified is met. Predicates created can be updated using the method `Model#updateFilteredPersonList(predicate)`.
+
+The `Grade` and `Subject` classes are set as additional data fields in `Person`.
+
+* Both classes have exposed methods `isEmpty()`, to check if the grade and subject parameters are specified.
+* When unspecified:
+  * `Grade()` equals to `Grade("-")` (i.e. "-" will be shown when there is no grade for the student.)
+  * `Subject()` equals to `Subject("No subject")` (i.e. "No subject" will be shown when no subject is assigned for the student.)
+
+Given below is an example usage scenario and what the predicate is at each step.
+
+Step 1. The user launches the application for the first time. The student's contacts in a form of `FilteredList` will be shown, where the predicate states that condition is true for all.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** By default, `FilteredList` predicate is set to `FilteredList.ALWAYS_TRUE`. But since both are equivalent, `Model.PREDICATE_SHOW_ALL_PERSONS` is used.
+
+</div>
+
+![FilterState0](images/FilterState0-FilteredList.png)
+
+Step 2. The user executes `filter g/A` command to get all students in the `FilteredList` who has an "A" grade. The `filter` command creates `GradeSubjectFilterPredicate`, and calls `Model#updateFilteredPersonList(predicate)`, updating the list to show students that has an "A" grade.
+
+![FilterState1](images/FilterState1-FilteredList.png)
+
+Calling `list` command will revert the predicate back to `Model.PREDICATE_SHOW_ALL_PERSONS`.
+
+<br>
+
+The following sequence diagram shows how a filter operation goes through the `Logic` component:
+
+![FilterSequenceDiagram-Logic](images/FilterSequenceDiagram-Logic.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `FilterCommand` and `GradeSubjectFilterPredicate` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</div>
+
+Similarly, how a filter operation goes through the `Model` component is shown below:
+
+![FilterSequenceDiagram-Model](images/FilterSequenceDiagram-Model.png)
+
+The following activity diagram summarizes what happens when a tutor executes a filter command.
+
+![FilterActivityDiagram](images/FilterActivityDiagram.png)
+
+#### Design considerations
+
+* Alternative 1: Filtered address book result can be saved, since in practice, there will only be a few combinations of filters.
+  * Pros: Operation will be fast as the number of students increases.
+  * Cons: More memory usage.
+* Alternative 2: Introduce command history to avoid typing long commands.
+  * Pros: Useful for the entire application, and would use less memory (e.g. storing the first 10 commands).
+  * Cons: Harder to implement.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
