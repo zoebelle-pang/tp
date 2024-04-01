@@ -49,6 +49,7 @@ public class CommandTestUtil {
     public static final String VALID_PAYMENT_UNPAID = "Not Paid";
     public static final String VALID_DATETIME_MAR = "2024-03-04 1800";
     public static final String VALID_DATETIME_FEB = "2024-02-03 1800";
+    public static final String VALID_DATETIME_DIFFERENT = "2024-02-03 2359";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 

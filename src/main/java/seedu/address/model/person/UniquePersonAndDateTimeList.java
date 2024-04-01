@@ -5,9 +5,11 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.exceptions.DuplicateDateTimeException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -15,14 +17,14 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
  * A person is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating of
  * persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a person uses Person#equals(Object) so
- * as to ensure that the person with exactly the same fields will be removed.
+ * unique in terms of identity in the UniquePersonAndDateTimeList. However, the removal of a person uses
+ * Person#equals(Object) so as to ensure that the person with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
  * @see Person#isSamePerson(Person)
  */
-public class UniquePersonList implements Iterable<Person> {
+public class UniquePersonAndDateTimeList implements Iterable<Person> {
 
     private final ObservableList<Person> internalList = FXCollections.observableArrayList();
     private final ObservableList<Person> internalUnmodifiableList =
@@ -37,13 +39,30 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Returns true if the list contains an equivalent DateTime as the given argument.
+     */
+    public boolean containsDateTime(Person toCheck) {
+        requireNonNull(toCheck);
+        Set<DateTime> toCheckDateTime = toCheck.getDateTimes();
+
+        return internalList.stream()
+                .flatMap(person -> person.getDateTimes().stream())
+                .anyMatch(toCheckDateTime::contains);
+    }
+
+    /**
      * Adds a person to the list.
      * The person must not already exist in the list.
+     * The person must not already have an existing datetime in the list.
      */
     public void add(Person toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
             throw new DuplicatePersonException();
+        }
+
+        if (containsDateTime(toAdd)) {
+            throw new DuplicateDateTimeException();
         }
         internalList.add(toAdd);
     }
@@ -79,7 +98,7 @@ public class UniquePersonList implements Iterable<Person> {
         }
     }
 
-    public void setPersons(UniquePersonList replacement) {
+    public void setPersons(UniquePersonAndDateTimeList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
@@ -116,12 +135,12 @@ public class UniquePersonList implements Iterable<Person> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof UniquePersonList)) {
+        if (!(other instanceof UniquePersonAndDateTimeList)) {
             return false;
         }
 
-        UniquePersonList otherUniquePersonList = (UniquePersonList) other;
-        return internalList.equals(otherUniquePersonList.internalList);
+        UniquePersonAndDateTimeList otherUniquePersonAndDateTimeList = (UniquePersonAndDateTimeList) other;
+        return internalList.equals(otherUniquePersonAndDateTimeList.internalList);
     }
 
     @Override
