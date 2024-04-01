@@ -200,7 +200,7 @@ Similarly, how a filter operation goes through the `Model` component is shown be
 
 The following activity diagram summarizes what happens when a tutor executes a filter command.
 
-![CommitActivityDiagram](images/CommitActivityDiagram.png)
+![FilterActivityDiagram](images/FilterActivityDiagram.png)
 
 #### Design considerations
 
