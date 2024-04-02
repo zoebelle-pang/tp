@@ -35,23 +35,23 @@ public class SampleDataUtil {
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), EMPTY_GRADE, EMPTY_SUBJECT,
                     new Attendance("Present"), new Payment("Paid"),
-                    getDateTimeSet("2024-03-02 1800", "2024-03-04 2000"), getTagSet("colleagues", "friends")),
+                    getDateTimeSet("2024-03-02 1900", "2024-03-04 2000"), getTagSet("colleagues", "friends")),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), EMPTY_GRADE, EMPTY_SUBJECT,
                     new Attendance("Present"), new Payment("Paid"),
-                    getDateTimeSet("2024-03-02 1800", "2024-03-21 1600"), getTagSet("neighbours")),
+                    getDateTimeSet("2024-03-02 2100", "2024-03-21 2200"), getTagSet("neighbours")),
             new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
                 new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), EMPTY_GRADE, EMPTY_SUBJECT,
                     new Attendance("Present"), new Payment("Paid"),
-                    getDateTimeSet("2024-03-14 2100"), getTagSet("family")),
+                    getDateTimeSet("2024-03-14 2300"), getTagSet("family")),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
                 new Address("Blk 47 Tampines Street 20, #17-35"), EMPTY_GRADE, EMPTY_SUBJECT,
                     new Attendance("Present"), new Payment("Paid"),
-                    getDateTimeSet("2024-03-18 2200"), getTagSet("classmates")),
+                    getDateTimeSet("2024-03-18 0100"), getTagSet("classmates")),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"), EMPTY_GRADE, EMPTY_SUBJECT,
                     new Attendance("Present"), new Payment("Paid"),
-                    getDateTimeSet("2024-03-28 2300"), getTagSet("colleagues"))
+                    getDateTimeSet("2024-03-28 0200"), getTagSet("colleagues"))
         };
     }
 
