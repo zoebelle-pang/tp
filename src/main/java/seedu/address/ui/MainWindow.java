@@ -36,6 +36,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ViewWindow viewWindow;
+//    private CommandListPanel commandListPanel;
 
     @FXML
     private FlowPane calendar;
@@ -184,6 +185,10 @@ public class MainWindow extends UiPart<Stage> {
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
     }
+
+//    public CommandListPanel getCommandListPanel() {
+//        return commandListPanel;
+//    }
 
     /**
      * Executes the command and returns the result.
