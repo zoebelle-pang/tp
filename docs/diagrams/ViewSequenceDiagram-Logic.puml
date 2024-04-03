@@ -1,0 +1,37 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant "v:ViewCommand" as ViewCommand LOGIC_COLOR
+end box
+
+[-> LogicManager : execute(view)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(view)
+activate AddressBookParser
+
+create ViewCommand
+AddressBookParser -> ViewCommand
+activate ViewCommand
+
+ViewCommand --> AddressBookParser
+deactivate ViewCommand
+
+AddressBookParser --> LogicManager : v
+deactivate AddressBookParser
+
+LogicManager -> ViewCommand : execute()
+activate ViewCommand
+
+ViewCommand --> LogicManager : result
+deactivate ViewCommand
+ViewCommand -[hidden]-> LogicManager : result
+destroy ViewCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

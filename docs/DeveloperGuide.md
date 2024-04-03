@@ -211,6 +211,32 @@ The following activity diagram summarizes what happens when a tutor executes a f
   * Pros: Useful for the entire application, and would use less memory (e.g. storing the first 10 commands).
   * Cons: Harder to implement.
 
+### View Command
+
+#### Implementation
+
+The `DateTime' class is set as additional data fields in `Person`.
+
+Step 1. The user launches the application for the first time.
+
+Step 2.
+- The user executes `view` command to view schedule on a calendar. The view commands calls `MainWindow#handleView()`. The `ViewWindow` will be initialized with the initial `Logic` in MainWindow.
+- `ViewWindow#drawCalendar()` executes and it calls on `ViewWindow#createSessionMap(currentDate)` to create a map of all tutoring sessions that falls on a day in the current month.
+- `ViewWindow#createSessionsOnDay` is executed on every date in the map of all tutoring session created previously to draw all sessions corresponding to their date in the calendar.
+
+Step 3. User views all sessions according to days in the current month.
+
+Step 4. User closes ViewWindow.  
+- Step 4a. User click on right arrow button to view next month, repeat from step 2
+
+The following sequence diagram shows how a filter operation goes through the `Logic` component:
+
+![ViewSequenceDiagram-Logic](images/ViewSequenceDiagram-Logic.png)
+
+The following activity diagram summarizes what happens when a tutor executes a view command.
+
+![ViewActivityDiagram](images/ViewActivityDiagram.png)
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
