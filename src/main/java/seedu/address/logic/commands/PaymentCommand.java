@@ -6,28 +6,28 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.GradeSubjectFilterPredicate;
+import seedu.address.model.person.PaymentFilterPredicate;
+
 
 /**
  * Filters the address book based on the Grade or Subject.
  */
-public class FilterCommand extends Command {
+public class PaymentCommand extends Command {
 
-    public static final String COMMAND_WORD = "filter";
+    public static final String COMMAND_WORD = "payment";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters the address book based on the Grade or Subject.\n"
-            + "Parameters: [g/GRADE] [s/SUBJECT]\n"
-            + "Example: " + COMMAND_WORD + " g/A s/Maths";
+            + ": Filters the address book based on the payment status.\n"
+            + "Parameters: [pa/PAYMENT]\n"
+            + "Example: " + COMMAND_WORD + " pa/paid";
 
     public static final String MESSAGE_FILTER_ADDRESS_BOOK_SUCCESS = "Filtered address book by %2$s!\n";
 
-    private final GradeSubjectFilterPredicate predicate;
+    private final PaymentFilterPredicate predicate;
 
-    public FilterCommand(GradeSubjectFilterPredicate predicate) {
+    public PaymentCommand(PaymentFilterPredicate predicate) {
         this.predicate = predicate;
     }
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -43,11 +43,11 @@ public class FilterCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof FilterCommand)) {
+        if (!(other instanceof PaymentCommand)) {
             return false;
         }
 
-        FilterCommand otherFilterCommand = (FilterCommand) other;
+        PaymentCommand otherFilterCommand = (PaymentCommand) other;
         return predicate.equals(otherFilterCommand.predicate);
     }
 

@@ -38,6 +38,10 @@ public class Payment {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public boolean isEmpty() {
+        return this.equals(new Grade());
+    }
+
     @Override
     public String toString() {
         return value;
