@@ -5,11 +5,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import seedu.address.model.person.Person;
 
 /**
@@ -35,7 +37,7 @@ public class PersonCard extends UiPart<Region> {
      */
 
     public final Person person;
-
+    private final NoteWindow noteWindow;
     @FXML
     private HBox cardPane;
     @FXML
@@ -57,6 +59,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private HBox payment;
     @FXML
+    private Button noteButton;
+    @FXML
     private HBox dateTimes;
     @FXML
     private Label dateTimeDescription;
@@ -69,6 +73,11 @@ public class PersonCard extends UiPart<Region> {
     public PersonCard(Person person, int displayedIndex) {
         super(FXML);
         this.person = person;
+
+        Stage stage = new Stage();
+        stage.setMaxWidth(400);
+        this.noteWindow = new NoteWindow(stage, person);
+
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         person.getTags().stream()
@@ -91,7 +100,6 @@ public class PersonCard extends UiPart<Region> {
                     dateTimes.getChildren()
                         .add(dateTimeLabel);
                 });
-
     }
 
     public void setField(HBox hbox, String description, String value) {
@@ -107,5 +115,17 @@ public class PersonCard extends UiPart<Region> {
         valueLabel.getStyleClass().add(CELL_SMALL_LABEL_CLASS);
         HBox.setHgrow(valueLabel, Priority.NEVER);
         hbox.getChildren().addAll(descriptionLabel, spacer, valueLabel);
+    }
+
+    /**
+     * Opens the note window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleNote() {
+        if (!noteWindow.isShowing()) {
+            noteWindow.show();
+        } else {
+            noteWindow.focus();
+        }
     }
 }

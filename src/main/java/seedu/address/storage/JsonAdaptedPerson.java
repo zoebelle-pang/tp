@@ -16,6 +16,7 @@ import seedu.address.model.person.DateTime;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Payment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -37,6 +38,7 @@ class JsonAdaptedPerson {
     private final String subject;
     private final String attendance;
     private final String payment;
+    private final String note;
     private final List<JsonAdaptedDateTime> dateTimes = new ArrayList<>();
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
@@ -48,6 +50,7 @@ class JsonAdaptedPerson {
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("grade") String grade, @JsonProperty("subject") String subject,
             @JsonProperty("attendance") String attendance, @JsonProperty("payment") String payment,
+            @JsonProperty("note") String note,
             @JsonProperty("dateTimes") List<JsonAdaptedDateTime> dateTimes,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
@@ -58,7 +61,8 @@ class JsonAdaptedPerson {
         this.subject = subject;
         this.attendance = attendance;
         this.payment = payment;
-        if (tags != null) {
+        this.note = note;
+        if (dateTimes != null) {
             this.dateTimes.addAll(dateTimes);
         }
         if (tags != null) {
@@ -78,6 +82,7 @@ class JsonAdaptedPerson {
         subject = source.getSubject().value;
         attendance = source.getAttendance().value;
         payment = source.getPayment().value;
+        note = source.getNote().value;
         dateTimes.addAll(source.getDateTimes().stream()
                 .map(JsonAdaptedDateTime::new)
                 .collect(Collectors.toList()));
@@ -168,10 +173,16 @@ class JsonAdaptedPerson {
         }
         final Payment modelPayment = new Payment(payment);
 
+        if (note == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Note.class.getSimpleName()));
+        }
+        final Note modelNote = new Note(note);
+
         final Set<DateTime> modelDateTimes = new HashSet<>(personDateTimes);
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelGrade, modelSubject,
-                modelAttendance, modelPayment, modelDateTimes, modelTags);
+                modelAttendance, modelPayment, modelNote, modelDateTimes, modelTags);
     }
 
 }

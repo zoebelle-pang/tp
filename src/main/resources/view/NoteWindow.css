@@ -1,0 +1,13 @@
+#noteContainer {
+    -fx-background-color: derive(#1d1d1d, 20%);
+}
+
+#noteName {
+    -fx-text-fill: white;
+    -fx-underline: true;
+}
+
+#noteText {
+    -fx-text-fill: white;
+}
+

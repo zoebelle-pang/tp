@@ -9,6 +9,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
+    "note": "<Note is empty. Please use the edit command to modify the note>",
     "dateTimes": [ ],
     "tags" : [ "friends" ]
   }, {
@@ -20,6 +21,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
+    "note": "<Note is empty. Please use the edit command to modify the note>",
     "dateTimes": [ "2024-02-03 1600" ],
     "tags" : [ "owesMoney", "friends" ]
   }, {
@@ -31,6 +33,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
+    "note": "<Note is empty. Please use the edit command to modify the note>",
     "dateTimes": [ "2024-02-03 1700" ],
     "tags" : [ ]
   }, {
@@ -42,6 +45,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
+    "note": "<Note is empty. Please use the edit command to modify the note>",
     "dateTimes": [ "2024-02-03 1800" ],
     "tags" : [ "friends" ]
   }, {
@@ -53,6 +57,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
+    "note": "<Note is empty. Please use the edit command to modify the note>",
     "dateTimes": [ "2024-02-03 1900" ],
     "tags" : [ ]
   }, {
@@ -64,6 +69,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
+    "note": "<Note is empty. Please use the edit command to modify the note>",
     "dateTimes": [ "2024-02-03 2000" ],
     "tags" : [ ]
   }, {
@@ -75,6 +81,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
+    "note": "<Note is empty. Please use the edit command to modify the note>",
     "dateTimes": [ "2024-02-03 2100" ],
     "tags" : [ ]
   } ]

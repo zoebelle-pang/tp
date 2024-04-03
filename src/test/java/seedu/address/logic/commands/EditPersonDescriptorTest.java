@@ -68,6 +68,7 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getSubject().orElse(null) + ", grade="
                 + editPersonDescriptor.getGrade().orElse(null) + ", attendance="
                 + editPersonDescriptor.getAttendance().orElse(null) + ", payment="
+                + editPersonDescriptor.getNote().orElse(null) + ", note="
                 + editPersonDescriptor.getPayment().orElse(null) + ", dateTime="
                 + editPersonDescriptor.getDateTime().orElse(null) + ", tags="
                 + editPersonDescriptor.getTags().orElse(null) + "}";
