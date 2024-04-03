@@ -12,7 +12,8 @@ import java.time.format.ResolverStyle;
  * Guarantees: immutable; dateTime is valid as declared in {@link #isValidDateTime(String)}
  */
 public class DateTime {
-    public static final String MESSAGE_CONSTRAINTS = "DateTime should be in the format yyyy-mm-dd hhmm";
+    public static final String MESSAGE_CONSTRAINTS = "DateTime should be in the format yyyy-mm-dd hhmm and"
+            + " a valid date and time";
     public static final String VALIDATION_REGEX = "\\d{4}-\\d{2}-\\d{2} \\d{4}";
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm")
             .withResolverStyle(ResolverStyle.STRICT);

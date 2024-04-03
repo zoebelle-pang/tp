@@ -50,6 +50,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Student added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_DATETIME = "This datetime already exists in the address book";
 
     private final Person toAdd;
 
@@ -67,6 +68,10 @@ public class AddCommand extends Command {
 
         if (model.hasPerson(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        }
+
+        if (model.hasDateTime(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_DATETIME);
         }
 
         model.addPerson(toAdd);

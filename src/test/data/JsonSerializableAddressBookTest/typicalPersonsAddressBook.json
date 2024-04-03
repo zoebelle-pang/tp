@@ -20,7 +20,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
-    "dateTimes": [ "2024-02-03 1800" ],
+    "dateTimes": [ "2024-02-03 1600" ],
     "tags" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
@@ -31,7 +31,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
-    "dateTimes": [ "2024-02-03 1800" ],
+    "dateTimes": [ "2024-02-03 1700" ],
     "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
@@ -53,7 +53,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
-    "dateTimes": [ "2024-02-03 1800" ],
+    "dateTimes": [ "2024-02-03 1900" ],
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
@@ -64,7 +64,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
-    "dateTimes": [ "2024-02-03 1800" ],
+    "dateTimes": [ "2024-02-03 2000" ],
     "tags" : [ ]
   }, {
     "name" : "George Best",
@@ -75,7 +75,7 @@
     "subject": "English",
     "attendance": "Present",
     "payment": "Paid",
-    "dateTimes": [ "2024-02-03 1800" ],
+    "dateTimes": [ "2024-02-03 2100" ],
     "tags" : [ ]
   } ]
 }

@@ -8,6 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
@@ -34,7 +35,10 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ViewWindow viewWindow;
 
+    @FXML
+    private FlowPane calendar;
     @FXML
     private StackPane commandBoxPlaceholder;
 
@@ -66,6 +70,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        viewWindow = new ViewWindow(logic);
     }
 
     public Stage getPrimaryStage() {
@@ -147,7 +152,20 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Opens the view schedule window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleView() {
+        if (!viewWindow.isShowing()) {
+            viewWindow.show();
+        } else {
+            viewWindow.focus();
+        }
+    }
+
     void show() {
+        primaryStage.setMaxWidth(400);
         primaryStage.show();
     }
 
@@ -159,6 +177,7 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
+        viewWindow.hide();
         helpWindow.hide();
         primaryStage.hide();
     }
@@ -180,6 +199,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
+            }
+
+            if (commandResult.isView()) {
+                handleView();
             }
 
             if (commandResult.isExit()) {

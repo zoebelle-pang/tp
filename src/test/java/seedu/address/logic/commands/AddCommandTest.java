@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalPersons.ALICE;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.person.DateTime;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -51,6 +53,17 @@ public class AddCommandTest {
         ModelStub modelStub = new ModelStubWithPerson(validPerson);
 
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+    }
+
+    @Test
+    public void execute_duplicateDateTime_throwsCommandException() {
+        Person alice = new PersonBuilder().withName("Alice").withDateTimes("2024-03-02 1800").build();
+        AddCommand addCommand = new AddCommand(alice);
+        Person bob = new PersonBuilder().withName("Bob").withDateTimes("2024-03-02 1800").build();
+        ModelStub modelStub = new ModelStubWithPerson(bob);
+
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_DATETIME, () -> addCommand
+                .execute(modelStub));
     }
 
     @Test
@@ -139,6 +152,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasDateTime(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -175,6 +193,14 @@ public class AddCommandTest {
             requireNonNull(person);
             return this.person.isSamePerson(person);
         }
+
+        @Override
+        public boolean hasDateTime(Person person) {
+            requireNonNull(person);
+            Set<DateTime> toCheckDateTime = person.getDateTimes();
+
+            return this.person.getDateTimes().stream().anyMatch(toCheckDateTime::contains);
+        }
     }
 
     /**
@@ -187,6 +213,16 @@ public class AddCommandTest {
         public boolean hasPerson(Person person) {
             requireNonNull(person);
             return personsAdded.stream().anyMatch(person::isSamePerson);
+        }
+
+        @Override
+        public boolean hasDateTime(Person person) {
+            requireNonNull(person);
+            Set<DateTime> toCheckDateTime = person.getDateTimes();
+
+            return personsAdded.stream()
+                    .flatMap(persons -> persons.getDateTimes().stream())
+                    .anyMatch(toCheckDateTime::contains);
         }
 
         @Override
