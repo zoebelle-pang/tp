@@ -14,7 +14,7 @@ public class ViewCommandTest {
 
     @Test
     public void execute_view_success() {
-        CommandResult expectedCommandResult = new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true);
+        CommandResult expectedCommandResult = new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true, false);
         assertCommandSuccess(new ViewCommand(), model, expectedCommandResult, expectedModel);
     }
 }

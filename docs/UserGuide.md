@@ -72,7 +72,7 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a student: `add`
+### Adding a student : `add`
 
 Adds a student to the address book.
 
@@ -111,7 +111,7 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd student to be `Betsy Crower` and clears all existing tags.
 
-### Locating students by name: `find`
+### Locating students by name : `find`
 
 Finds students whose names contain any of the given keywords.
 
@@ -129,7 +129,7 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Filter student by grade / subject:  `filter`
+### Filter student by grade / subject :  `filter`
 
 Filters student who has the specified grade and/or subject.
 
@@ -139,7 +139,7 @@ Format: `filter [g/GRADE] [s/SUBJECT]`
 * The order of keywords does not matter.
 * At least one of the optional fields must be provided.
 
-### View Schedule: `view`
+### View Schedule : `view`
 
 Displays a calendar to view scheduled classes.
 
@@ -161,6 +161,17 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd student in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
+
+### Command history : `history`
+
+Shows previous successful command history. Enter [list](#listing-all-students--list) to view the student list. Ignores saving `history` command itself.
+
+Format: `history [INDEX]`
+
+* Leaving whitespace / not entering index will list out the command history.
+* The index refers to the index number shown in the displayed command history list.
+* The index **must be a positive integer**, and should be within the list's boundaries.
+* Lists previous 10 commands by default.
 
 ### Clearing all entries : `clear`
 

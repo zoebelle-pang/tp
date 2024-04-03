@@ -311,7 +311,7 @@ public class EditCommand extends Command {
 
         @Override
         public String toString() {
-            return new ToStringBuilder(this)
+            return new ToStringBuilder(this.getClass().getSimpleName())
                     .add("name", name)
                     .add("phone", phone)
                     .add("email", email)
