@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PAYMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
@@ -32,6 +33,7 @@ import seedu.address.model.person.DateTime;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Payment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -45,7 +47,7 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the student identified "
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
@@ -57,15 +59,16 @@ public class EditCommand extends Command {
             + "[" + PREFIX_SUBJECT + "SUBJECT] "
             + "[" + PREFIX_ATTENDANCE + "PAYMENT] "
             + "[" + PREFIX_PAYMENT + "ATTENDANCE] "
+            + "[" + PREFIX_NOTE + "NOTE] "
             + "[" + PREFIX_DATETIME + "DATETIME] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Student: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the address book.";
     public static final String MESSAGE_DUPLICATE_DATETIME = "This datetime already exists in the address book";
 
     private final Index index;
@@ -130,11 +133,12 @@ public class EditCommand extends Command {
         Subject updatedSubject = editPersonDescriptor.getSubject().orElse(personToEdit.getSubject());
         Attendance updatedAttendance = editPersonDescriptor.getAttendance().orElse(personToEdit.getAttendance());
         Payment updatedPayment = editPersonDescriptor.getPayment().orElse(personToEdit.getPayment());
+        Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote());
         Set<DateTime> updatedDateTime = editPersonDescriptor.getDateTime().orElse(personToEdit.getDateTimes());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
-                updatedGrade, updatedSubject, updatedAttendance, updatedPayment, updatedDateTime, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedGrade, updatedSubject,
+                updatedAttendance, updatedPayment, updatedNote, updatedDateTime, updatedTags);
     }
 
     @Override
@@ -174,6 +178,7 @@ public class EditCommand extends Command {
         private Grade grade;
         private Attendance attendance;
         private Payment payment;
+        private Note note;
         private Set<DateTime> dateTime;
         private Set<Tag> tags;
 
@@ -190,6 +195,9 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setSubject(toCopy.subject);
             setGrade(toCopy.grade);
+            setAttendance(toCopy.attendance);
+            setPayment(toCopy.payment);
+            setNote(toCopy.note);
             setDateTime(toCopy.dateTime);
             setTags(toCopy.tags);
         }
@@ -198,7 +206,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, subject, grade, dateTime, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, subject, grade, attendance, payment, note,
+                    dateTime, tags);
         }
 
         public void setName(Name name) {
@@ -265,6 +274,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(payment);
         }
 
+        public void setNote(Note note) {
+            this.note = note;
+        }
+
+        public Optional<Note> getNote() {
+            return Optional.ofNullable(note);
+        }
+
         public void setDateTime(Set<DateTime> dateTime) {
             this.dateTime = (dateTime != null) ? new HashSet<>(dateTime) : null;
         }
@@ -320,6 +337,7 @@ public class EditCommand extends Command {
                     .add("grade", grade)
                     .add("attendance", attendance)
                     .add("payment", payment)
+                    .add("note", note)
                     .add("dateTime", dateTime)
                     .add("tags", tags)
                     .toString();

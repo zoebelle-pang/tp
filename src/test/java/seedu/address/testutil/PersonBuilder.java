@@ -9,6 +9,7 @@ import seedu.address.model.person.DateTime;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Payment;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -29,7 +30,7 @@ public class PersonBuilder {
     public static final String DEFAULT_SUBJECT = "English";
     public static final String DEFAULT_ATTENDANCE = "Present";
     public static final String DEFAULT_PAYMENT = "Paid";
-
+    public static final String DEFAULT_NOTE = "";
     private Name name;
     private Phone phone;
     private Email email;
@@ -38,6 +39,7 @@ public class PersonBuilder {
     private Subject subject;
     private Attendance attendance;
     private Payment payment;
+    private Note note;
     private Set<DateTime> dateTimes;
     private Set<Tag> tags;
 
@@ -53,6 +55,7 @@ public class PersonBuilder {
         subject = new Subject(DEFAULT_SUBJECT);
         attendance = new Attendance(DEFAULT_ATTENDANCE);
         payment = new Payment(DEFAULT_PAYMENT);
+        note = new Note(DEFAULT_NOTE);
         dateTimes = new HashSet<>();
         tags = new HashSet<>();
     }
@@ -69,6 +72,7 @@ public class PersonBuilder {
         subject = personToCopy.getSubject();
         attendance = personToCopy.getAttendance();
         payment = personToCopy.getPayment();
+        note = personToCopy.getNote();
         dateTimes = new HashSet<>(personToCopy.getDateTimes());
         tags = new HashSet<>(personToCopy.getTags());
     }
@@ -146,6 +150,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Note} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withNote(String note) {
+        this.note = new Note(note);
+        return this;
+    }
+
+    /**
      * Sets the {@code DateTime} of the {@code Person} that we are building.
      */
     public PersonBuilder withDateTimes(String ... dateTimes) {
@@ -154,7 +166,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, grade, subject, attendance, payment, dateTimes, tags);
+        return new Person(name, phone, email, address, grade, subject, attendance, payment, note, dateTimes, tags);
     }
 
 }
