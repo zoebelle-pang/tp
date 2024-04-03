@@ -27,7 +27,7 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 d/2024-02-03 1800 at/present pa/paid` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 s/English d/2024-02-03 1800` : Adds a contact named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -57,7 +57,7 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `view` `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
@@ -72,11 +72,11 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a student: `add`
+### Adding a student : `add`
 
 Adds a student to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [d/DATETIME] [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [d/DATETIME]…​ [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A student can have any number of tags (including 0)
@@ -98,7 +98,7 @@ Format: `list`
 
 Edits an existing student in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [d/DATETIME]…​ [t/TAG]…​`
 
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -111,7 +111,7 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd student to be `Betsy Crower` and clears all existing tags.
 
-### Locating students by name: `find`
+### Locating students by name : `find`
 
 Finds students whose names contain any of the given keywords.
 
@@ -129,7 +129,7 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Filter student by grade / subject:  `filter`
+### Filter student by grade / subject :  `filter`
 
 Filters student who has the specified grade and/or subject.
 
@@ -139,9 +139,12 @@ Format: `filter [g/GRADE] [s/SUBJECT]`
 * The order of keywords does not matter.
 * At least one of the optional fields must be provided.
 
-### View Schedule: `view`
+### View Schedule : `view`
 
 Displays a calendar to view scheduled classes.
+
+Example:
+![Calendar](images/ViewCalendar.png)
 
 Format: `view`
 
@@ -158,6 +161,17 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd student in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
+
+### Command history : `history`
+
+Shows previous successful command history. Enter [list](#listing-all-students--list) to view the student list. Ignores saving `history` command itself.
+
+Format: `history [INDEX]`
+
+* Leaving whitespace / not entering index will list out the command history.
+* The index refers to the index number shown in the displayed command history list.
+* The index **must be a positive integer**, and should be within the list's boundaries.
+* Lists previous 10 commands by default.
 
 ### Clearing all entries : `clear`
 

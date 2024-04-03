@@ -51,7 +51,7 @@ public class FindCommand extends Command {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder(this.getClass().getSimpleName())
                 .add("predicate", predicate)
                 .toString();
     }

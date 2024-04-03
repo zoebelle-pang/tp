@@ -125,6 +125,7 @@ The `Model` component,
 * stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+* stores a `CommandHistory` object that stores the previous commands performed. This is exposed to the outside as a `ReadOnlyCommandHistory` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
@@ -210,6 +211,32 @@ The following activity diagram summarizes what happens when a tutor executes a f
 * Alternative 2: Introduce command history to avoid typing long commands.
   * Pros: Useful for the entire application, and would use less memory (e.g. storing the first 10 commands).
   * Cons: Harder to implement.
+
+### View Command
+
+#### Implementation
+
+The `DateTime' class is set as additional data fields in `Person`.
+
+Step 1. The user launches the application for the first time.
+
+Step 2.
+- The user executes `view` command to view schedule on a calendar. The view commands calls `MainWindow#handleView()`. The `ViewWindow` will be initialized with the initial `Logic` in MainWindow.
+- `ViewWindow#drawCalendar()` executes and it calls on `ViewWindow#createSessionMap(currentDate)` to create a map of all tutoring sessions that falls on a day in the current month.
+- `ViewWindow#createSessionsOnDay` is executed on every date in the map of all tutoring session created previously to draw all sessions corresponding to their date in the calendar.
+
+Step 3. User views all sessions according to days in the current month.
+
+Step 4. User closes ViewWindow.  
+- Step 4a. User click on right arrow button to view next month, repeat from step 2
+
+The following sequence diagram shows how a filter operation goes through the `Logic` component:
+
+![ViewSequenceDiagram-Logic](images/ViewSequenceDiagram-Logic.png)
+
+The following activity diagram summarizes what happens when a tutor executes a view command.
+
+![ViewActivityDiagram](images/ViewActivityDiagram.png)
 
 ### \[Proposed\] Undo/redo feature
 
@@ -343,12 +370,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *` | tutor     | edit details of a student                   | update whenever their contact details changes                           |
 | `* * *` | tutor     | edit my own details                         | update whenever my contact details changes                              |
 | `* *`   | tutor     | filter my students by subject / grade level | tailor my teaching approach according to students' needs                |
-| `* *`   | tutor     | mark students' monthly payments             | keep track of any payments left unpaid                                  |
 | `* *`   | tutor     | view all outstanding payments               | remind their parents of their tuition fees                              |
 | `* *`   | tutor     | sort the students by grade level            | tailor my teaching approach according to students' needs                |
 | `* *`   | tutor     | view my schedules                           | get to the appointed lessons on time                                    |
-| `* *`   | tutor     | get reminders incoming weekly sessions      | remember my upcoming lessons                                            |
-| `*`     | tutor     | communicate with my students on the App     | update them on any academic details I missed during lessons             |
 | `*`     | tutor     | track attendence of students                | monitor their commitment to tutoring sessions                           |
 | `*`     | tutor     | reschedule sessions with my students        | accomodate changes in availability                                      |
 | `*`     | tutor     | make session notes for students             | keep track of lesson details                                            |
