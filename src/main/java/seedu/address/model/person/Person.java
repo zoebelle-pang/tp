@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
@@ -104,15 +105,15 @@ public class Person {
     }
 
     /**
-     * Returns true if both persons have the same set of datetime.
+     * Returns a set of differing datetime.
      */
-    public boolean isSameDateTime(Person otherPerson) {
-        if (otherPerson == this) {
-            return true;
-        }
+    public Set<DateTime> differingDateTimes(Person otherPerson) {
+        Set<DateTime> otherPersonDateTimes = otherPerson.getDateTimes();
 
-        return otherPerson != null
-                && otherPerson.getDateTimes().equals(getDateTimes());
+        return otherPersonDateTimes.stream()
+                .filter(datetime -> !getDateTimes().contains(datetime))
+                .collect(Collectors.toSet());
+
     }
 
     /**
