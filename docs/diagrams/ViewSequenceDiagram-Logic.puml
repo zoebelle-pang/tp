@@ -27,9 +27,9 @@ deactivate AddressBookParser
 LogicManager -> ViewCommand : execute()
 activate ViewCommand
 
-ViewCommand --> LogicManager : result
+ViewCommand --> LogicManager : commandResult
 deactivate ViewCommand
-ViewCommand -[hidden]-> LogicManager : result
+ViewCommand -[hidden]-> LogicManager : commandResult
 destroy ViewCommand
 
 [<--LogicManager

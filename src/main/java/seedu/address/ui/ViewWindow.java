@@ -130,8 +130,11 @@ public class ViewWindow extends UiPart<Stage> {
         int dateOffset = LocalDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1, 0, 0, 0, 0)
                 .getDayOfWeek().getValue();
 
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
+        int colOfDays = 7;
+        int rowsOfWeeks = 6;
+
+        for (int i = 0; i < rowsOfWeeks; i++) {
+            for (int j = 0; j < colOfDays; j++) {
                 StackPane stackPane = new StackPane();
                 Rectangle rectangle = new Rectangle();
                 rectangle.setFill(Color.TRANSPARENT);

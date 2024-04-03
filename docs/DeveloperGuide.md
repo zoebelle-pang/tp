@@ -227,12 +227,15 @@ Step 2.
 
 Step 3. User views all sessions according to days in the current month.
 
-Step 4. User closes ViewWindow.  
-- Step 4a. User click on right arrow button to view next month, repeat from step 2
+Step 4. User click on right/left arrow button to view next/previous month, repeat from step 2
 
-The following sequence diagram shows how a filter operation goes through the `Logic` component:
+The following sequence diagram shows how a view operation goes through the `Logic` component:
 
 ![ViewSequenceDiagram-Logic](images/ViewSequenceDiagram-Logic.png)
+
+The following sequence diagram shows how a view operation goes through the `UI` component:
+
+![ViewSequenceDiagram-Logic](images/ViewSequenceDiagram-Ui.png)
 
 The following activity diagram summarizes what happens when a tutor executes a view command.
 
