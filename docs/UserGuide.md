@@ -139,9 +139,9 @@ Format: `filter [g/GRADE] [s/SUBJECT]`
 * The order of keywords does not matter.
 * At least one of the optional fields must be provided.
 
-### Filter student by payment :  `payment`
+### Categorised student by payment :  `payment`
 
-Filters student who has paid / Not paid
+Categorise student who has paid or Not paid
 
 Format: `payment [pa/PAYMENT]`
 
