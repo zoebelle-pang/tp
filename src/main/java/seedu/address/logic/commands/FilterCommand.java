@@ -36,7 +36,6 @@ public class FilterCommand extends Command {
                 String.format(MESSAGE_FILTER_ADDRESS_BOOK_SUCCESS + Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
                         model.getFilteredPersonList().size(), predicate.filterResult()));
     }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
