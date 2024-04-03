@@ -92,7 +92,7 @@ public class FilterCommandTest {
     public void toStringMethod() {
         GradeSubjectFilterPredicate predicate = new GradeSubjectFilterPredicate(new Grade(), new Subject());
         FilterCommand filterCommand = new FilterCommand(predicate);
-        String expected = FilterCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
+        String expected = FilterCommand.class.getSimpleName() + "{predicate=" + predicate + "}";
         assertEquals(expected, filterCommand.toString());
     }
 }

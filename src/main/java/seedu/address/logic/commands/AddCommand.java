@@ -95,7 +95,7 @@ public class AddCommand extends Command {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder(this.getClass().getSimpleName())
                 .add("toAdd", toAdd)
                 .toString();
     }

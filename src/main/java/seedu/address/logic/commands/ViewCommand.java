@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.Model;
 
 /**
@@ -13,5 +14,10 @@ public class ViewCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         return new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true, false);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this.getClass().getSimpleName()).toString();
     }
 }
