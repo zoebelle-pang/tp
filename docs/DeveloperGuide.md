@@ -343,12 +343,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *` | tutor     | edit details of a student                   | update whenever their contact details changes                           |
 | `* * *` | tutor     | edit my own details                         | update whenever my contact details changes                              |
 | `* *`   | tutor     | filter my students by subject / grade level | tailor my teaching approach according to students' needs                |
-| `* *`   | tutor     | mark students' monthly payments             | keep track of any payments left unpaid                                  |
 | `* *`   | tutor     | view all outstanding payments               | remind their parents of their tuition fees                              |
 | `* *`   | tutor     | sort the students by grade level            | tailor my teaching approach according to students' needs                |
 | `* *`   | tutor     | view my schedules                           | get to the appointed lessons on time                                    |
-| `* *`   | tutor     | get reminders incoming weekly sessions      | remember my upcoming lessons                                            |
-| `*`     | tutor     | communicate with my students on the App     | update them on any academic details I missed during lessons             |
 | `*`     | tutor     | track attendence of students                | monitor their commitment to tutoring sessions                           |
 | `*`     | tutor     | reschedule sessions with my students        | accomodate changes in availability                                      |
 | `*`     | tutor     | make session notes for students             | keep track of lesson details                                            |
