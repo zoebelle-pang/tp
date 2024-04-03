@@ -12,6 +12,6 @@ public class ViewCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true);
+        return new CommandResult(SHOWING_SCHEDULE_MESSAGE, false, false, true, false);
     }
 }

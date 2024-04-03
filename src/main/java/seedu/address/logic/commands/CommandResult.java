@@ -22,14 +22,19 @@ public class CommandResult {
     /** The application show the schedule to the user. */
     private final boolean showView;
 
+    /** The application shows the command history to the user. */
+    private final boolean showHistory;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean showView) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean showView,
+                         boolean showHistory) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
         this.showView = showView;
+        this.showHistory = showHistory;
     }
 
     /**
@@ -37,7 +42,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, false);
+        this(feedbackToUser, false, false, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -56,6 +61,10 @@ public class CommandResult {
         return showView;
     }
 
+    public boolean isShowHistory() {
+        return showHistory;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -71,12 +80,13 @@ public class CommandResult {
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit
-                && showView == otherCommandResult.showView;
+                && showView == otherCommandResult.showView
+                && showHistory == otherCommandResult.showHistory;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit, showView);
+        return Objects.hash(feedbackToUser, showHelp, exit, showView, showHistory);
     }
 
     @Override
@@ -86,6 +96,7 @@ public class CommandResult {
                 .add("showHelp", showHelp)
                 .add("exit", exit)
                 .add("showView", showView)
+                .add("showHistory", showHistory)
                 .toString();
     }
 

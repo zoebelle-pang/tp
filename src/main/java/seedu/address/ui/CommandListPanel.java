@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -7,9 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
-import seedu.address.model.person.Person;
 
-import java.util.logging.Logger;
 
 /**
  * Panel containing the list of commands.
@@ -27,13 +27,13 @@ public class CommandListPanel extends UiPart<Region> {
     public CommandListPanel(ObservableList<Command> commandList) {
         super(FXML);
         commandListView.setItems(commandList);
-        commandListView.setCellFactory(listView -> new commandListViewCell());
+        commandListView.setCellFactory(listView -> new CommandListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Command} using a {@code CommandCard}.
      */
-    class commandListViewCell extends ListCell<Command> {
+    class CommandListViewCell extends ListCell<Command> {
         @Override
         protected void updateItem(Command command, boolean empty) {
             super.updateItem(command, empty);
