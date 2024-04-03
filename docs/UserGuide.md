@@ -228,5 +228,6 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
 **Filter**| `filter [g/GRADE] [s/SUBJECT]`
 **View Schedule**|`view`
+**history**|`history`
 **List** | `list`                                                                                                                                                                
 **Help** | `help`                                                                                                                                                                  
