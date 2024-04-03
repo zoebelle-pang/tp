@@ -54,7 +54,7 @@ public class GradeSubjectFilterPredicate implements Predicate<Person> {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this.getClass().getSimpleName())
+        return new ToStringBuilder("")
                 .add("grade", filteredGrade)
                 .add("subject", filteredSubject)
                 .toString();

@@ -17,7 +17,7 @@ public class FilterCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Filters the address book based on the Grade or Subject.\n"
-            + "Parameters: <GRADE|SUBJECT>\n"
+            + "Parameters: [g/GRADE] [s/SUBJECT]\n"
             + "Example: " + COMMAND_WORD + " g/A s/Maths";
 
     public static final String MESSAGE_FILTER_ADDRESS_BOOK_SUCCESS = "Filtered address book by %2$s!\n";
@@ -55,7 +55,6 @@ public class FilterCommand extends Command {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("predicate", predicate)
                 .toString();
     }
 }
