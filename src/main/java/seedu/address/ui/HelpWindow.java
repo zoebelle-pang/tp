@@ -33,6 +33,8 @@ public class HelpWindow extends UiPart<Stage> {
                     + "       Usage: 'delete INDEX'\n\n"
                     + "    - Filter by Grade / Subject: 'filter <g/GRADE | s/SUBJECT>'\n"
                     + "       Usage: 'filter g/A s/Maths'\n\n"
+                    + "    - Categorise by Payment: 'payment <pa/PAYMENT>'\n"
+                    + "       Usage: 'payment pa/Not Paid'\n\n"
                     + "    - Viewing Calendar : 'view'\n\n"
                     + "    - Show previous successful commands : 'history'\n\n"
                     + "    - Clearing all entries : 'clear'\n\n"
