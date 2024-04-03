@@ -139,6 +139,16 @@ Format: `filter [g/GRADE] [s/SUBJECT]`
 * The order of keywords does not matter.
 * At least one of the optional fields must be provided.
 
+### Filter student by payment :  `payment`
+
+Filters student who has paid / Not paid
+
+Format: `payment [pa/PAYMENT]`
+
+* The search is case-insensitive. e.g `paid` will match `PAID`
+* Only full words will be matched e.g. `Not paid` will not match `Not p`
+
+
 ### View Schedule : `view`
 
 Displays a calendar to view scheduled classes.
