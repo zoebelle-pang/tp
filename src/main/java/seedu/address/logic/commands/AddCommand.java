@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PAYMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
@@ -33,8 +34,9 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "ADDRESS "
             + "[" + PREFIX_GRADE + "GRADE] "
             + "[" + PREFIX_SUBJECT + "SUBJECT] "
-            + "[" + PREFIX_GRADE + "ATTENDANCE] "
-            + "[" + PREFIX_SUBJECT + "PAYMENT] "
+            + "[" + PREFIX_ATTENDANCE + "ATTENDANCE] "
+            + "[" + PREFIX_PAYMENT + "PAYMENT] "
+            + "[" + PREFIX_NOTE + "NOTE] "
             + "[" + PREFIX_DATETIME + "DATETIME] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
@@ -46,6 +48,7 @@ public class AddCommand extends Command {
             + PREFIX_SUBJECT + "Mathematics "
             + PREFIX_ATTENDANCE + "Present "
             + PREFIX_PAYMENT + "Paid "
+            + PREFIX_NOTE + "Sample note "
             + PREFIX_DATETIME + "2024-03-02 1800";
 
     public static final String MESSAGE_SUCCESS = "New Student added: %1$s";
