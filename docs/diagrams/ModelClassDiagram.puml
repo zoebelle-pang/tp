@@ -58,7 +58,6 @@ Name -[hidden]-> Grade
 Phone -[hidden]-> Subject
 Address -[hidden]-> Attendance
 Email -[hidden]-> Payment
-UniquePersonList -[hidden]right-> I
 
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address
