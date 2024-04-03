@@ -67,7 +67,7 @@ public class FilterCommandTest {
                 new GradeSubjectFilterPredicate(new Grade("F"), new Subject("Rizzanomics"));
         String expectedMessage =
                 String.format(MESSAGE_FILTER_ADDRESS_BOOK_SUCCESS + Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
-                0, predicate);
+                0, predicate.filterResult());
         FilterCommand command = new FilterCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -80,7 +80,7 @@ public class FilterCommandTest {
                 new GradeSubjectFilterPredicate(new Grade("A"), new Subject("English"));
         String expectedMessage =
                 String.format(MESSAGE_FILTER_ADDRESS_BOOK_SUCCESS + Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
-                        7, predicate);
+                        7, predicate.filterResult());
         FilterCommand command = new FilterCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);

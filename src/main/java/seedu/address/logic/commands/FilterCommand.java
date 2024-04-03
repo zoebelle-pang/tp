@@ -34,7 +34,7 @@ public class FilterCommand extends Command {
         model.updateFilteredPersonList(predicate);
         return new CommandResult(
                 String.format(MESSAGE_FILTER_ADDRESS_BOOK_SUCCESS + Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
-                        model.getFilteredPersonList().size(), predicate));
+                        model.getFilteredPersonList().size(), predicate.filterResult()));
     }
 
     @Override
@@ -55,6 +55,7 @@ public class FilterCommand extends Command {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .add("predicate", predicate)
                 .toString();
     }
 }
