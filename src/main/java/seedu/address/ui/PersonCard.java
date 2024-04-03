@@ -17,13 +17,13 @@ import seedu.address.model.person.Person;
  */
 public class PersonCard extends UiPart<Region> {
     private static final String FXML = "PersonListCard.fxml";
-    private static final String PHONE_LABEL = "Phone: ";
-    private static final String ADDRESS_LABEL = "Address: ";
-    private static final String EMAIL_LABEL = "Email: ";
-    private static final String SUBJECT_LABEL = "Subject: ";
-    private static final String GRADE_LABEL = "Grade: ";
-    private static final String ATTENDANCE_LABEL = "Last class attendance: ";
-    private static final String PAYMENT_LABEL = "Current monthly fees status: ";
+    private static final String PHONE_DESCRIPTION = "Phone: ";
+    private static final String ADDRESS_DESCRIPTION = "Address: ";
+    private static final String EMAIL_DESCRIPTION = "Email: ";
+    private static final String SUBJECT_DESCRIPTION = "Subject: ";
+    private static final String GRADE_DESCRIPTION = "Grade: ";
+    private static final String ATTENDANCE_DESCRIPTION = "Last class attendance: ";
+    private static final String PAYMENT_DESCRIPTION = "Current monthly fees status: ";
     private static final String CELL_SMALL_LABEL_CLASS = "cell_small_label";
 
     /**
@@ -74,13 +74,13 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        setField(phone, PHONE_LABEL, person.getPhone().value);
-        setField(address, ADDRESS_LABEL, person.getAddress().value);
-        setField(email, EMAIL_LABEL, person.getEmail().value);
-        setField(attendance, ATTENDANCE_LABEL, person.getAttendance().value);
-        setField(payment, PAYMENT_LABEL, person.getPayment().value);
-        setField(subject, SUBJECT_LABEL, person.getSubject().value);
-        setField(grade, GRADE_LABEL, person.getGrade().value);
+        setField(phone, PHONE_DESCRIPTION, person.getPhone().value);
+        setField(address, ADDRESS_DESCRIPTION, person.getAddress().value);
+        setField(email, EMAIL_DESCRIPTION, person.getEmail().value);
+        setField(attendance, ATTENDANCE_DESCRIPTION, person.getAttendance().value);
+        setField(payment, PAYMENT_DESCRIPTION, person.getPayment().value);
+        setField(subject, SUBJECT_DESCRIPTION, person.getSubject().value);
+        setField(grade, GRADE_DESCRIPTION, person.getGrade().value);
         person.getDateTimes().stream()
                 .sorted(Comparator.comparing(dateTime -> dateTime.value))
                 .forEach(dateTime -> {
