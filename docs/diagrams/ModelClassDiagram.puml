@@ -22,13 +22,10 @@ Class Phone
 Class Tag
 Class Grade
 Class Subject
+Class DateTime
 Class Attendance
 Class Payment
-<<<<<<< HEAD
-Class DateTime
-=======
 Class CommandHistory
->>>>>>> bafafa107d2f411ea343c2356a14917315cb9e4a
 
 Class I #FFFFFF
 }
@@ -56,9 +53,9 @@ Person *--> Address
 Person *--> "*" Tag
 Person *-> Grade
 Person *-> Subject
+Person *--> "*" DateTime
 Person *-> Attendance
 Person *-> Payment
-Person *--> "*" DateTime
 
 Person -[hidden]up--> I
 Name -[hidden]-> Grade
