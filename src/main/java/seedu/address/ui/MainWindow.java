@@ -165,6 +165,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     void show() {
+        primaryStage.setMaxWidth(400);
         primaryStage.show();
     }
 
