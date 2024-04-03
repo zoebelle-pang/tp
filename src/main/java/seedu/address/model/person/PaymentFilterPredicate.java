@@ -59,7 +59,7 @@ public class PaymentFilterPredicate implements Predicate<Person> {
     @Override
     public String toString() {
         return new ToStringBuilder(this.getClass().getSimpleName())
-                .add("payment", filteredPayment)
+                .add("Payment", filteredPayment)
                 .toString();
     }
 }
