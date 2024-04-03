@@ -99,8 +99,15 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        if (!personToEdit.isSameDateTime(editedPerson) && model.hasDateTime(editedPerson)) {
-            throw new CommandException(MESSAGE_DUPLICATE_DATETIME);
+        Set<DateTime> nonMatchingDateTimes = personToEdit.differingDateTimes(editedPerson);
+
+        if (!nonMatchingDateTimes.isEmpty()) {
+            editPersonDescriptor.setDateTime(nonMatchingDateTimes);
+            Person checkDateTimePerson = createEditedPerson(personToEdit, editPersonDescriptor);
+
+            if (model.hasDateTime(checkDateTimePerson)) {
+                throw new CommandException(MESSAGE_DUPLICATE_DATETIME);
+            }
         }
 
         model.setPerson(personToEdit, editedPerson);
