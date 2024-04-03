@@ -141,7 +141,7 @@ Format: `filter [g/GRADE] [s/SUBJECT]`
 
 ### Categorised student by payment :  `payment`
 
-Categorise student who has paid or Not paid
+Categorise student who has Paid or Not paid
 
 Format: `payment [pa/PAYMENT]`
 
