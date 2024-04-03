@@ -36,6 +36,16 @@ public class GradeSubjectFilterPredicate implements Predicate<Person> {
         return isGradeFiltered && isSubjectFiltered;
     }
 
+    /**
+     * Returns a String representation of the filter result for GUI display.
+     *
+     * @return Filter result.
+     */
+    public String filterResult() {
+        return "Grade: " + filteredGrade.toString() + ","
+                + "Subject: " + filteredSubject.toString();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
