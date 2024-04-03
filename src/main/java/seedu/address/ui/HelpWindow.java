@@ -34,6 +34,7 @@ public class HelpWindow extends UiPart<Stage> {
                     + "    - Filter by Grade / Subject: 'filter <g/GRADE | s/SUBJECT>'\n"
                     + "       Usage: 'filter g/A s/Maths'\n\n"
                     + "    - Viewing Calendar : 'view'\n\n"
+                    + "    - Show previous successful commands : 'history'\n\n"
                     + "    - Clearing all entries : 'clear'\n\n"
                     + "    - Exiting the program : 'exit'\n\n"
                     + "You can view the complete user guide at "

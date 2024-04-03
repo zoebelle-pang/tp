@@ -8,7 +8,7 @@ start
 'Since the beta syntax does not support placing the condition outside the
 'diamond we place it as the true branch instead.
 
-:ViewWindow draws calendar;
-:MainWindow opens ViewWindow;
+:ViewWindow initializes and draws calendar;
+:System opens ViewWindow;
 stop
 @enduml
