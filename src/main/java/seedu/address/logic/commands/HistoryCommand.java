@@ -40,7 +40,7 @@ public class HistoryCommand extends Command {
             return new CommandResult(MESSAGE_HISTORY_SUCCESS, false, false, false, true);
         } else {
             if (targetIndex.getZeroBased() >= commandList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+                throw new CommandException(Messages.MESSAGE_INVALID_COMMAND_INDEX);
             }
 
             Command command = commandList.get(targetIndex.getZeroBased());

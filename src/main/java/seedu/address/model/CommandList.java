@@ -15,6 +15,9 @@ import seedu.address.logic.commands.Command;
  */
 public class CommandList implements Iterable<Command> {
 
+    /**
+     * Adjusts the number of commands it will hold.
+     */
     private static final int THRESHOLD = 10;
     private final ObservableList<Command> internalList = FXCollections.observableArrayList();
 
