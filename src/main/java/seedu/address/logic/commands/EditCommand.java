@@ -99,7 +99,7 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        if (model.hasDateTime(editedPerson)) {
+        if (!personToEdit.isSameDateTime(editedPerson) && model.hasDateTime(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_DATETIME);
         }
 
