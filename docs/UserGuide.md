@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+TutorsGo is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
@@ -27,7 +27,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 d/2024-02-03 1800 at/present pa/paid` : Adds a contact named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -72,18 +72,20 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a student: `add`
 
-Adds a person to the address book.
+Adds a student to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [d/DATETIME] [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
+* Grade should only contain a single letter from A to D, with plus(+), minus(-) or neither.
+* DateTime should be in yyyy-mm-dd hhmm
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
 ### Listing all persons : `list`
@@ -140,31 +142,6 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
-
-### Mark student's payment: `mark_payment`
-
-Marks completion of monthly tuition fees for a specified student from the address book.
-
-Format: `mark_payment INDEX`
-
-* Marks payment of student at the specified `INDEX`
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1,2,3, ...
-* It is encouraged to use the [find](#locating-persons-by-name-find) command to search for a particular student for his/her index.
-
-Examples:
-* `find john doe` returns `John Doe` with an index 2.
-* `mark_payment 2` will return this success message, when `John Doe` has outstanding fees. <br>
-  !['mark_payment 2' on success](images/paymentJohnDoeSuccess.png)
-* Otherwise, if `John Doe` does not have any fees due, it would return a failure message. <br>
-  !['mark_payment 2' on failure](images/paymentJohnDoeFailure.png)
-
-
-### View outstanding payments: `payment_list`
-
-View any outstanding payments from students for the month.
-
-Format: `payment_list`
 
 ### Clearing all entries : `clear`
 

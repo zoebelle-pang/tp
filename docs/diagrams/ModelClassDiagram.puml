@@ -12,13 +12,18 @@ Class AddressBook
 Class ModelManager
 Class UserPrefs
 
-Class UniquePersonList
+Class UniquePersonAndDateTimeList
 Class Person
 Class Address
 Class Email
 Class Name
 Class Phone
 Class Tag
+Class Grade
+Class Subject
+Class DateTime
+Class Attendance
+Class Payment
 
 Class I #FFFFFF
 }
@@ -35,15 +40,24 @@ ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniquePersonList
-UniquePersonList --> "~* all" Person
+AddressBook *--> "1" UniquePersonAndDateTimeList
+UniquePersonAndDateTimeList --> "~* all" Person
 Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> "*" Tag
+Person *-> Grade
+Person *-> Subject
+Person *--> "*" DateTime
+Person *-> Attendance
+Person *-> Payment
 
 Person -[hidden]up--> I
+Name -[hidden]-> Grade
+Phone -[hidden]-> Subject
+Address -[hidden]-> Attendance
+Email -[hidden]-> Payment
 UniquePersonList -[hidden]right-> I
 
 Name -[hidden]right-> Phone
