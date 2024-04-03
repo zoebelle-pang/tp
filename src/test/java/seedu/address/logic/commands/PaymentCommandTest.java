@@ -24,8 +24,8 @@ import seedu.address.model.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.*;
-
+import seedu.address.model.person.Payment;
+import seedu.address.model.person.PaymentFilterPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code PaymentCommand}.
@@ -41,24 +41,24 @@ public class PaymentCommandTest {
         PaymentFilterPredicate secondPredicate =
                 new PaymentFilterPredicate(new Payment("Paid"));
 
-        PaymentCommand PaymentFirstCommand = new PaymentCommand(firstPredicate);
-        PaymentCommand PaymentSecondCommand = new PaymentCommand(secondPredicate);
+        PaymentCommand paymentFirstCommand = new PaymentCommand(firstPredicate);
+        PaymentCommand paymentSecondCommand = new PaymentCommand(secondPredicate);
 
         // same object -> returns true
-        assertTrue(PaymentFirstCommand.equals(PaymentFirstCommand));
+        assertTrue(paymentFirstCommand.equals(paymentFirstCommand));
 
         // same values -> returns true
         PaymentCommand findFirstCommandCopy = new PaymentCommand(firstPredicate);
-        assertTrue(PaymentFirstCommand.equals(findFirstCommandCopy));
+        assertTrue(paymentFirstCommand.equals(findFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(PaymentFirstCommand.equals(1));
+        assertFalse(paymentFirstCommand.equals(1));
 
         // null -> returns false
-        assertFalse(PaymentFirstCommand.equals(null));
+        assertFalse(paymentFirstCommand.equals(null));
 
         // different person -> returns false
-        assertFalse(PaymentFirstCommand.equals(PaymentSecondCommand));
+        assertFalse(paymentFirstCommand.equals(paymentSecondCommand));
     }
 
     @Test
