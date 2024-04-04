@@ -12,6 +12,7 @@ Provide tutors with access to contact details and schedules of their students.
 - Provides easy lookup of students
 - Filter contacts by subjects or grade level
 - Shows payment status of student
+- Show tutoring sessions in a calendar
 - Allows tutor to add notes to individual student
 
 For the detailed documentation of this project, see [TutorsGo Product Website](https://ay2324s2-cs2103-f15-2.github.io/tp/)

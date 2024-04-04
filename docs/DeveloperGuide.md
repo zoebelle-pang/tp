@@ -410,7 +410,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *` | tutor     | edit my own details                         | update whenever my contact details changes                              |
 | `* *`   | tutor     | filter my students by subject / grade level | tailor my teaching approach according to students' needs                |
 | `* *`   | tutor     | view all outstanding payments               | remind their parents of their tuition fees                              |
-| `* *`   | tutor     | sort the students by grade level            | tailor my teaching approach according to students' needs                |
 | `* *`   | tutor     | view my schedules                           | get to the appointed lessons on time                                    |
 | `*`     | tutor     | track attendence of students                | monitor their commitment to tutoring sessions                           |
 | `*`     | tutor     | reschedule sessions with my students        | accomodate changes in availability                                      |
@@ -455,13 +454,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-**Use case: Track attendance**
+**Use case: Track payment status**
 
 **MSS**
 1.  User requests to list students
 2.  TutorsGo shows a list of students
-3.  User requests to track attendance of a specific person in the list
-4.  TutorsGo shows all dates student has attended
+3.  User requests to track stu who not paid in the list
+4.  TutorsGo shows all the student Not paid
 
     Use case ends.
 
