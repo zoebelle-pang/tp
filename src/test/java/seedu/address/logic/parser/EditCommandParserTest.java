@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.ATTENDANCE_DESC_ABSENT;
 import static seedu.address.logic.commands.CommandTestUtil.DATETIME_DESC_FEB;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
@@ -13,16 +14,20 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.PAYMENT_DESC_PAID;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.SUBJECT_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ATTENDANCE_ABSENT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ATTENDANCE_PRESENT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATETIME_FEB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PAYMENT_PAID;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SUBJECT_AMY;
@@ -117,7 +122,8 @@ public class EditCommandParserTest {
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withSubject(VALID_SUBJECT_AMY).withGrade(VALID_GRADE_AMY).withDateTime(VALID_DATETIME_FEB)
+                .withSubject(VALID_SUBJECT_AMY).withGrade(VALID_GRADE_AMY).withAttendance(VALID_ATTENDANCE_PRESENT)
+                .withPayment(VALID_PAYMENT_PAID).withDateTime(VALID_DATETIME_FEB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -172,6 +178,18 @@ public class EditCommandParserTest {
         // grade
         userInput = targetIndex.getOneBased() + GRADE_DESC_AMY;
         descriptor = new EditPersonDescriptorBuilder().withGrade(VALID_GRADE_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // Payment
+        userInput = targetIndex.getOneBased() + PAYMENT_DESC_PAID;
+        descriptor = new EditPersonDescriptorBuilder().withPayment(VALID_PAYMENT_PAID).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // Attendance
+        userInput = targetIndex.getOneBased() + ATTENDANCE_DESC_ABSENT;
+        descriptor = new EditPersonDescriptorBuilder().withAttendance(VALID_ATTENDANCE_ABSENT).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
