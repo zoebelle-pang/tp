@@ -400,22 +400,22 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​   | I want to …​                                | So that I can…​                                                         |
-|---------|-----------|---------------------------------------------|-------------------------------------------------------------------------|
-| `* * *` | new tutor | see usage instructions                      | refer to instructions when I forget how to use the App                  |
-| `* * *` | tutor     | add a new tutor                             | manage the new tutor's schedule                                         |
-| `* * *` | tutor     | delete a student                            | remove entries that I no longer need                                    |
-| `* * *` | tutor     | find a student by name                      | locate details of students without having to go through the entire list |
-| `* * *` | tutor     | add a student                               | register a student for tutoring                                         |
-| `* * *` | tutor     | list all students                           | view all registered students                                            |
-| `* * *` | tutor     | edit details of a student                   | update whenever their contact details changes                           |
-| `* * *` | tutor     | edit my own details                         | update whenever my contact details changes                              |
-| `* *`   | tutor     | filter my students by subject / grade level | tailor my teaching approach according to students' needs                |
-| `* *`   | tutor     | view all outstanding payments by status     | remind their parents of their tuition fees                              |
-| `* *`   | tutor     | view my schedules                           | get to the appointed lessons on time                                    |
-| `*`     | tutor     | track attendence of students                | monitor their commitment to tutoring sessions                           |
-| `*`     | tutor     | reschedule sessions with my students        | accomodate changes in availability                                      |
-| `*`     | tutor     | make session notes for students             | keep track of lesson details                                            |
+| Priority | As a …​   | I want to …​                                    | So that I can…​                                                         |
+|---------|-----------|-------------------------------------------------|-------------------------------------------------------------------------|
+| `* * *` | new tutor | see usage instructions                          | refer to instructions when I forget how to use the App                  |
+| `* * *` | tutor     | add a new tutor                                 | manage the new tutor's schedule                                         |
+| `* * *` | tutor     | delete a student                                | remove entries that I no longer need                                    |
+| `* * *` | tutor     | find a student by name                          | locate details of students without having to go through the entire list |
+| `* * *` | tutor     | add a student                                   | register a student for tutoring                                         |
+| `* * *` | tutor     | list all students                               | view all registered students                                            |
+| `* * *` | tutor     | edit details of a student                       | update whenever their contact details changes                           |
+| `* * *` | tutor     | edit my own details                             | update whenever my contact details changes                              |
+| `* *`   | tutor     | filter my students by subject / grade level     | tailor my teaching approach according to students' needs                |
+| `* *`   | tutor     | view all outstanding payments by payment status | remind their parents of their tuition fees                              |
+| `* *`   | tutor     | view my schedules                               | get to the appointed lessons on time                                    |
+| `*`     | tutor     | track attendence of students                    | monitor their commitment to tutoring sessions                           |
+| `*`     | tutor     | reschedule sessions with my students            | accomodate changes in availability                                      |
+| `*`     | tutor     | make session notes for students                 | keep track of lesson details                                            |
 
 *{More to be added}*
 
