@@ -244,13 +244,9 @@ The following sequence diagram shows how a Payment filter operation goes through
 
 </div>
 
-Similarly, how a filter operation goes through the `Model` component is shown below:
-
-![FilterSequenceDiagram-Model](images/FilterSequenceDiagram-Model.png)
-
 The following activity diagram summarizes what happens when a tutor executes a filter command.
 
-![FilterActivityDiagram](images/PaymentActivityDiagram.png)
+![PaymentActivityDiagram.png](images%2FPaymentActivityDiagram.png)![PaymentActivityDiagram](images/PaymentActivityDiagram.png![PaymentActivityDiagram.png](images%2FPaymentActivityDiagram.png))
 
 ### View Command
 
