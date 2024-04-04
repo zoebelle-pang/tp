@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import seedu.address.model.person.Person;
@@ -18,15 +17,8 @@ import seedu.address.model.person.Person;
  * An UI component that displays information of a {@code Person}.
  */
 public class PersonCard extends UiPart<Region> {
+
     private static final String FXML = "PersonListCard.fxml";
-    private static final String PHONE_DESCRIPTION = "Phone: ";
-    private static final String ADDRESS_DESCRIPTION = "Address: ";
-    private static final String EMAIL_DESCRIPTION = "Email: ";
-    private static final String SUBJECT_DESCRIPTION = "Subject: ";
-    private static final String GRADE_DESCRIPTION = "Grade: ";
-    private static final String ATTENDANCE_DESCRIPTION = "Last class attendance: ";
-    private static final String PAYMENT_DESCRIPTION = "Current monthly fees status: ";
-    private static final String CELL_SMALL_LABEL_CLASS = "cell_small_label";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -38,6 +30,7 @@ public class PersonCard extends UiPart<Region> {
 
     public final Person person;
     private final NoteWindow noteWindow;
+
     @FXML
     private HBox cardPane;
     @FXML
@@ -45,25 +38,21 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private HBox phone;
+    private Label phone;
     @FXML
-    private HBox address;
+    private Label address;
     @FXML
-    private HBox email;
+    private Label email;
     @FXML
-    private HBox subject;
+    private FlowPane subjectWithGrade;
     @FXML
-    private HBox grade;
+    private Label attendance;
     @FXML
-    private HBox attendance;
-    @FXML
-    private HBox payment;
+    private Label payment;
     @FXML
     private Button noteButton;
     @FXML
-    private HBox dateTimes;
-    @FXML
-    private Label dateTimeDescription;
+    private FlowPane dateTimes;
     @FXML
     private FlowPane tags;
 
@@ -73,48 +62,29 @@ public class PersonCard extends UiPart<Region> {
     public PersonCard(Person person, int displayedIndex) {
         super(FXML);
         this.person = person;
-
         Stage stage = new Stage();
         stage.setMaxWidth(400);
         this.noteWindow = new NoteWindow(stage, person);
 
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
+        phone.setText(person.getPhone().value);
+        address.setText(person.getAddress().value);
+        email.setText(person.getEmail().value);
+        subjectWithGrade.getChildren().add(new Label(person.getSubject().value));
+        subjectWithGrade.getChildren().add(new Label(person.getGrade().value));
+        attendance.setText(person.getAttendance().value);
+        payment.setText(person.getPayment().value);
+        dateTimes.setHgap(5);
+        person.getDateTimes().stream()
+                .sorted(Comparator.comparing(dateTime -> dateTime.value))
+                .forEach(dateTime -> dateTimes.getChildren()
+                        .add(new Label(LocalDateTime.parse(dateTime.value,
+                                        DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm"))
+                                .format(DateTimeFormatter.ofPattern("MMM d uuuu h:mma")))));
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        setField(phone, PHONE_DESCRIPTION, person.getPhone().value);
-        setField(address, ADDRESS_DESCRIPTION, person.getAddress().value);
-        setField(email, EMAIL_DESCRIPTION, person.getEmail().value);
-        setField(attendance, ATTENDANCE_DESCRIPTION, person.getAttendance().value);
-        setField(payment, PAYMENT_DESCRIPTION, person.getPayment().value);
-        setField(subject, SUBJECT_DESCRIPTION, person.getSubject().value);
-        setField(grade, GRADE_DESCRIPTION, person.getGrade().value);
-        person.getDateTimes().stream()
-                .sorted(Comparator.comparing(dateTime -> dateTime.value))
-                .forEach(dateTime -> {
-                    Label dateTimeLabel = new Label(LocalDateTime.parse(dateTime.value,
-                                    DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm"))
-                            .format(DateTimeFormatter.ofPattern("MMM d uuuu h:mma")));
-                    dateTimeLabel.getStyleClass().add(CELL_SMALL_LABEL_CLASS);
-                    dateTimes.getChildren()
-                        .add(dateTimeLabel);
-                });
-    }
-
-    public void setField(HBox hbox, String description, String value) {
-        Label descriptionLabel = new Label(description);
-        descriptionLabel.getStyleClass().add(CELL_SMALL_LABEL_CLASS);
-        HBox.setHgrow(descriptionLabel, Priority.NEVER);
-
-        Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
-
-
-        Label valueLabel = new Label(value);
-        valueLabel.getStyleClass().add(CELL_SMALL_LABEL_CLASS);
-        HBox.setHgrow(valueLabel, Priority.NEVER);
-        hbox.getChildren().addAll(descriptionLabel, spacer, valueLabel);
     }
 
     /**
@@ -128,4 +98,8 @@ public class PersonCard extends UiPart<Region> {
             noteWindow.focus();
         }
     }
+
 }
+
+
+

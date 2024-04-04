@@ -10,7 +10,6 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -37,10 +36,6 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ViewWindow viewWindow;
-    private CommandListPanel commandListPanel;
-
-    @FXML
-    private VBox personList;
 
     @FXML
     private FlowPane calendar;
@@ -58,9 +53,6 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
-
-    @FXML
-    private StackPane commandListPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -126,11 +118,6 @@ public class MainWindow extends UiPart<Stage> {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        commandListPanel = new CommandListPanel(logic.getCommandHistory());
-        commandListPanelPlaceholder.getChildren().add(commandListPanel.getRoot());
-
-        personList.getChildren().remove(commandListPanelPlaceholder);
-
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -171,35 +158,13 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleView() {
         if (!viewWindow.isShowing()) {
-            viewWindow = new ViewWindow(logic);
             viewWindow.show();
         } else {
             viewWindow.focus();
         }
     }
 
-    /**
-     * Hides the student list and shows the command history list.
-     */
-    public void toggleHistoryList() {
-        if (personList.getChildren().contains(personListPanelPlaceholder)) {
-            personList.getChildren().remove(personListPanelPlaceholder);
-            personList.getChildren().add(commandListPanelPlaceholder);
-        }
-    }
-
-    /**
-     * Hides the command history list and shows the student list.
-     */
-    public void toggleStudentList() {
-        if (personList.getChildren().contains(commandListPanelPlaceholder)) {
-            personList.getChildren().remove(commandListPanelPlaceholder);
-            personList.getChildren().add(personListPanelPlaceholder);
-        }
-    }
-
     void show() {
-        primaryStage.setMaxWidth(400);
         primaryStage.show();
     }
 
@@ -220,10 +185,6 @@ public class MainWindow extends UiPart<Stage> {
         return personListPanel;
     }
 
-    public CommandListPanel getCommandListPanel() {
-        return commandListPanel;
-    }
-
     /**
      * Executes the command and returns the result.
      *
@@ -241,12 +202,6 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isView()) {
                 handleView();
-            }
-
-            if (commandResult.isShowHistory()) {
-                toggleHistoryList();
-            } else {
-                toggleStudentList();
             }
 
             if (commandResult.isExit()) {
