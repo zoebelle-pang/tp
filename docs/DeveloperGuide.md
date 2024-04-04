@@ -212,6 +212,46 @@ The following activity diagram summarizes what happens when a tutor executes a f
   * Pros: Useful for the entire application, and would use less memory (e.g. storing the first 10 commands).
   * Cons: Harder to implement.
 
+### Payment Command
+
+#### Implementation
+
+The payment command in the Address book application is implemented using the PaymentPredicate, which extends the Predicate functional interface.
+This predicate is used to set a condition for filtering students based on whether they have paid or not paid.
+
+The application allows updating the payment predicate using the Model#updateFilteredPersonList(predicate) method.
+
+The Payment class is added as an additional data field in the Person class.
+* When unspecified:
+    * `Payment()` equals to `Payment("-")` (i.e. "-" will be shown when there is no payment for the student.)
+
+Given below is an example usage scenario and what the predicate is at each step.
+
+Step 1. The user launches the application for the first time. The student's contacts in the form of FilteredList will be shown, where the predicate states that the payment condition is true for all.
+
+Step 2. The user executes `Payment pa/paid` command to get all students in the `FilteredList` who has an "Paid". The `payment` command creates `PaymentFilterPredicate`, and calls `Model#updateFilteredPersonList(predicate)`, updating the list to show students that has "Paid".
+
+![PaymentFilterState](images/FilterState2-PaymentFilteredList.png)
+
+Calling `list` command will revert the predicate back to `Model.PREDICATE_SHOW_ALL_PERSONS`.
+
+<br>
+The following sequence diagram shows how a Payment filter operation goes through the `Logic` component:
+
+![PaymentSequenceDiagram-Logic](images/PaymentSequenceDiagram-Logic.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** Similarly to filter command, the lifeline for `PaymentCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</div>
+
+Similarly, how a filter operation goes through the `Model` component is shown below:
+
+![FilterSequenceDiagram-Model](images/FilterSequenceDiagram-Model.png)
+
+The following activity diagram summarizes what happens when a tutor executes a filter command.
+
+![FilterActivityDiagram](images/PaymentActivityDiagram.png)
+
 ### View Command
 
 #### Implementation
