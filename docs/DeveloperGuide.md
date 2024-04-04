@@ -328,7 +328,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`     | tutor            | track attendence of students                | monitor their commitment to tutoring sessions                           |
 | `*`     | tutor            | reschedule sessions with my students        | accomodate changes in availability                                      |
 | `*`     | tutor            | make session notes for students             | keep track of lesson details                                            |
-| `*`     | tech-savvy tutor | have access to a command history             | so that I can eliminate typing long commands more than once.                                            |
+| `*`     | tech-savvy tutor | have access to a command history             | so that I can eliminate typing long commands more than once.            |
 
 *{More to be added}*
 
