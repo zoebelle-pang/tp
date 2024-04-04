@@ -12,8 +12,8 @@ title: TutorsGo
 
 
 ## Features
-Create notes for students | View student scehdules                                   | Command history                                     | Handle payment, attendance, etc.
---------------------------|----------------------------------------------------------|-----------------------------------------------------|-----------
+Create notes for students | View student scehdules | Command history   | Handle payment, attendance, etc.
+------------------------------------------------------------------------------|------------------------|-------------------|-----------------------------------------------------------------------
 Keep track of lesson plans by creating session notes for individual students. | View a calendar to never miss tutoring upcoming lessons. | View and run past commands for a faster experience. |  Supports tracking of student's attendances, payments and more.      
 
 
