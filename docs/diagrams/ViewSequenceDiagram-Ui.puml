@@ -14,7 +14,7 @@ end box
 [-> MainWindow : MainWindow(stage,logic)
 activate MainWindow
 
-MainWindow -> Logic : execute()
+MainWindow -> Logic : execute(view)
 activate Logic
 Logic --> MainWindow : commandResult
 deactivate Logic

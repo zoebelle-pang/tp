@@ -9,6 +9,6 @@ start
 'diamond we place it as the true branch instead.
 
 :ViewWindow initializes and draws calendar;
-:System opens ViewWindow;
+:System opens ViewWindow and shows calendar;
 stop
 @enduml

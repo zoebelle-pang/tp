@@ -122,7 +122,7 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
+* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonAndDateTimeList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * stores a `CommandHistory` object that stores the previous commands performed. This is exposed to the outside as a `ReadOnlyCommandHistory` objects.
@@ -260,10 +260,10 @@ Step 1. The user launches the application for the first time.
 
 Step 2.
 - The user executes `view` command to view schedule on a calendar. The view commands calls `MainWindow#handleView()`. The `ViewWindow` will be initialized with the initial `Logic` in MainWindow.
-- `ViewWindow#drawCalendar()` executes and it calls on `ViewWindow#createSessionMap(currentDate)` to create a map of all tutoring sessions that falls on a day in the current month.
+- `ViewWindow#drawCalendar()` executes and it calls on `ViewWindow#createSessionMap(currentFocusedDate)` to create a map of all tutoring sessions that falls on a date in the current focused month.
 - `ViewWindow#createSessionsOnDay` is executed on every date in the map of all tutoring session created previously to draw all sessions corresponding to their date in the calendar.
 
-Step 3. User views all sessions according to days in the current month.
+Step 3. User views all sessions according to days in the current focused month.
 
 Step 4. User click on right/left arrow button to view next/previous month, repeat from step 2
 
