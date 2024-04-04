@@ -411,7 +411,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *` | tutor     | edit details of a student                   | update whenever their contact details changes                           |
 | `* * *` | tutor     | edit my own details                         | update whenever my contact details changes                              |
 | `* *`   | tutor     | filter my students by subject / grade level | tailor my teaching approach according to students' needs                |
-| `* *`   | tutor     | view all outstanding payments               | remind their parents of their tuition fees                              |
+| `* *`   | tutor     | view all outstanding payments by status     | remind their parents of their tuition fees                              |
 | `* *`   | tutor     | view my schedules                           | get to the appointed lessons on time                                    |
 | `*`     | tutor     | track attendence of students                | monitor their commitment to tutoring sessions                           |
 | `*`     | tutor     | reschedule sessions with my students        | accomodate changes in availability                                      |
