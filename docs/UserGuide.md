@@ -136,6 +136,7 @@ Filters student who has the specified grade and/or subject.
 Format: `filter [g/GRADE] [s/SUBJECT]`
 
 * Search is case-sensitive.
+* Only full words will be matched.
 * The order of keywords does not matter.
 * At least one of the optional fields must be provided.
 

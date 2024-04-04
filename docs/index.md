@@ -13,17 +13,20 @@ title: TutorsGo
 
 ## Features
 
-**Create notes for students** : Keep track of lesson plans by creating session notes for individual students.
+* **Create notes for students**: Keep track of lesson plans by creating session notes for individual students.
 
-**View student schedules** : View a calendar to never miss tutoring upcoming lessons.
+* **View student schedules**: View a calendar to never miss tutoring upcoming lessons.
 
-**Command history** : View and run past commands for a faster experience.
+* **Command history**: View and run past commands.
 
-**Handle payment, attendance, etc.** : Supports tracking of student's attendances, payments and more.
+* **Handle payment, attendance, etc**: Supports tracking of student's attendances, payments and more.
+
+* **Filter students by grade / subject**: 
 
 
-* If you are interested in using TutorsGo, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing TutorsGo, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+If you are interested in using TutorsGo, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
+
+If you are interested about developing TutorsGo, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
 
 
 **Acknowledgements**

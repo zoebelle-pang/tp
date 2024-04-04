@@ -42,8 +42,10 @@ public class GradeSubjectFilterPredicate implements Predicate<Person> {
      * @return Filter result.
      */
     public String filterResult() {
-        return "Grade: " + filteredGrade.toString() + ","
-                + "Subject: " + filteredSubject.toString();
+        String gradeOutput = (filteredGrade.isEmpty()) ? "" : "Grade: " + filteredGrade;
+        String subjectOutput = (filteredSubject.isEmpty()) ? "" : "Subject: " + filteredSubject;
+        String comma = (!(filteredSubject.isEmpty()) && !(filteredGrade.isEmpty())) ? ", " : "";
+        return gradeOutput + comma + subjectOutput;
     }
 
     @Override
