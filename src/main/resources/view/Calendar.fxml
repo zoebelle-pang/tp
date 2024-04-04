@@ -10,10 +10,10 @@
 <fx:root resizable="True" title="View Schedule" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <scene>
         <Scene>
-            <AnchorPane prefHeight="930.0" prefWidth="1220.0" style="-fx-background-color: #383838;">
+            <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #383838;">
                 <children>
-                    <FlowPane fx:id="calendar" hgap="10.0" layoutX="14.0" layoutY="116.0" prefHeight="800.0" prefWidth="1200.0" vgap="5.0" />
-                    <HBox alignment="CENTER" layoutX="400.0" layoutY="14.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
+                    <FlowPane fx:id="calendar" hgap="10.0" layoutX="14.0" layoutY="116.0" prefHeight="600.0" prefWidth="900.0" vgap="5.0" />
+                    <HBox alignment="CENTER" layoutX="260.0" layoutY="20.0" prefHeight="60.0" prefWidth="400.0" spacing="5.0">
                         <children>
                             <Button mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
                             <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####" style="-fx-fill: #ffffff;">
@@ -23,7 +23,7 @@
                             <Button mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
                         </children>
                     </HBox>
-                    <HBox alignment="CENTER" layoutX="70.0" layoutY="78.0" prefHeight="44.0" prefWidth="500.0" spacing="160.75">
+                    <HBox alignment="CENTER" layoutX="65.0" layoutY="78.0" prefHeight="44.0" prefWidth="300.0" spacing="113.75">
                         <children>
                             <Text text="Su" style="-fx-fill: #ffffff;"/>
                             <Text text="Mo" style="-fx-fill: #ffffff;"/>
