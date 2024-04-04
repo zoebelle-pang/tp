@@ -279,94 +279,6 @@ The following activity diagram summarizes what happens when a tutor executes a v
 
 ![ViewActivityDiagram](images/ViewActivityDiagram.png)
 
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how an undo operation goes through the `Logic` component:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram-Logic.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-Similarly, how an undo operation goes through the `Model` component is shown below:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram-Model.png)
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<img src="images/CommitActivityDiagram.png" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -400,22 +312,23 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​   | I want to …​                                | So that I can…​                                                         |
-|---------|-----------|---------------------------------------------|-------------------------------------------------------------------------|
-| `* * *` | new tutor | see usage instructions                      | refer to instructions when I forget how to use the App                  |
-| `* * *` | tutor     | add a new tutor                             | manage the new tutor's schedule                                         |
-| `* * *` | tutor     | delete a student                            | remove entries that I no longer need                                    |
-| `* * *` | tutor     | find a student by name                      | locate details of students without having to go through the entire list |
-| `* * *` | tutor     | add a student                               | register a student for tutoring                                         |
-| `* * *` | tutor     | list all students                           | view all registered students                                            |
-| `* * *` | tutor     | edit details of a student                   | update whenever their contact details changes                           |
-| `* * *` | tutor     | edit my own details                         | update whenever my contact details changes                              |
-| `* *`   | tutor     | filter my students by subject / grade level | tailor my teaching approach according to students' needs                |
-| `* *`   | tutor     | view all outstanding payments               | remind their parents of their tuition fees                              |
-| `* *`   | tutor     | view my schedules                           | get to the appointed lessons on time                                    |
-| `*`     | tutor     | track attendence of students                | monitor their commitment to tutoring sessions                           |
-| `*`     | tutor     | reschedule sessions with my students        | accomodate changes in availability                                      |
-| `*`     | tutor     | make session notes for students             | keep track of lesson details                                            |
+| Priority | As a …​          | I want to …​                                | So that I can…​                                                         |
+|---------|------------------|---------------------------------------------|-------------------------------------------------------------------------|
+| `* * *` | new tutor        | see usage instructions                      | refer to instructions when I forget how to use the App                  |
+| `* * *` | tutor            | add a new tutor                             | manage the new tutor's schedule                                         |
+| `* * *` | tutor            | delete a student                            | remove entries that I no longer need                                    |
+| `* * *` | tutor            | find a student by name                      | locate details of students without having to go through the entire list |
+| `* * *` | tutor            | add a student                               | register a student for tutoring                                         |
+| `* * *` | tutor            | list all students                           | view all registered students                                            |
+| `* * *` | tutor            | edit details of a student                   | update whenever their contact details changes                           |
+| `* * *` | tutor            | edit my own details                         | update whenever my contact details changes                              |
+| `* *`   | tutor            | filter my students by subject / grade level | tailor my teaching approach according to students' needs                |
+| `* *`   | tutor            | view all outstanding payments               | remind their parents of their tuition fees                              |
+| `* *`   | tutor            | view my schedules                           | get to the appointed lessons on time                                    |
+| `*`     | tutor            | track attendence of students                | monitor their commitment to tutoring sessions                           |
+| `*`     | tutor            | reschedule sessions with my students        | accomodate changes in availability                                      |
+| `*`     | tutor            | make session notes for students             | keep track of lesson details                                            |
+| `*`     | tech-savvy tutor | have access to a command history             | so that I can eliminate typing long commands more than once.            |
 
 *{More to be added}*
 
@@ -424,11 +337,39 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 (For all use cases below, the **System** is the `TutorsGo` and the **Actor** is the `tutor`, unless specified otherwise)
 
 
+**Use case: Adding a student note**
+
+**MSS**
+
+1. Tutor adds a note for a particular student.
+2. TutorsGo shows a success message.
+
+    Use case ends.
+
+
+**Use case: Filter students**
+
+**MSS**
+
+1. Tutor filters student by grade and/or subject.
+2. Tutor shows a success message along with students meeting criteria.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Parameters given are invalid.
+    
+    * 1a1. TutorsGo shows an error message.
+    
+    Use case ends.
+
+
 **Use case: Adding a person**
 
 **MSS**
 
-1.  User adds a person
+1.  Tutor adds a person
 2.  TutorsGo shows a success message.
 
     Use case ends.
@@ -441,11 +382,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1b. The tag given is not a `Student` or a `Tutor`.
 
-    * 1b1. TutorsGo shows an error message.
+**Use case: Check command history**
 
-      Use case ends.
+**MSS**
+
+1. Tutor checks the command history.
+2. TutorsGo shows a command history list.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Tutor enters the command he/she wants to run.
+
+    * 1a1. TutorsGo shows output of command.
+  
+    Use case ends.
 
 
 **Use case: View schedule**
@@ -455,6 +408,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TutorsGo shows upcoming schedule of current month
 
     Use case ends.
+
 
 **Use case: Track payment status**
 
