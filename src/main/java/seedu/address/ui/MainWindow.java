@@ -41,7 +41,6 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private VBox personList;
-
     @FXML
     private FlowPane calendar;
     @FXML
@@ -58,7 +57,6 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
-
     @FXML
     private StackPane commandListPanelPlaceholder;
 
@@ -166,19 +164,6 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Opens the view schedule window or focuses on it if it's already opened.
-     */
-    @FXML
-    public void handleView() {
-        if (!viewWindow.isShowing()) {
-            viewWindow = new ViewWindow(logic);
-            viewWindow.show();
-        } else {
-            viewWindow.focus();
-        }
-    }
-
-    /**
      * Hides the student list and shows the command history list.
      */
     public void toggleHistoryList() {
@@ -198,8 +183,20 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Opens the view schedule window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleView() {
+        if (!viewWindow.isShowing()) {
+            viewWindow = new ViewWindow(logic);
+            viewWindow.show();
+        } else {
+            viewWindow.focus();
+        }
+    }
+
     void show() {
-        primaryStage.setMaxWidth(400);
         primaryStage.show();
     }
 

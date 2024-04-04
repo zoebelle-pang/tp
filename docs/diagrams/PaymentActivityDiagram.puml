@@ -1,0 +1,14 @@
+@startuml
+skin rose
+skinparam ActivityFontSize 15
+skinparam ArrowFontSize 12
+start
+:User executes payment command;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+:System updates payment predicate;
+:Returns Payment filtered student list;
+stop
+@enduml

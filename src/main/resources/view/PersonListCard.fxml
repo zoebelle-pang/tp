@@ -17,19 +17,16 @@
     </columnConstraints>
     <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
       <padding>
-        <Insets top="7" right="5" bottom="5" left="15" />
+        <Insets top="5" right="5" bottom="5" left="15" />
       </padding>
-      <HBox spacing="10" alignment="CENTER_LEFT" maxWidth="400">
-        <padding>
-          <Insets bottom="5" />
-        </padding>
-        <Label fx:id="id" styleClass="cell_big_label" HBox.hgrow="NEVER">
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label fx:id="id" styleClass="cell_big_label">
           <minWidth>
             <!-- Ensures that the label text is never truncated -->
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" HBox.hgrow="NEVER"/>
+        <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
         <Region HBox.hgrow="ALWAYS" />
         <Button fx:id="noteButton" mnemonicParsing="false" onAction="#handleNote" text="Open note">
           <VBox.margin>
@@ -38,17 +35,28 @@
         </Button>
       </HBox>
       <FlowPane fx:id="tags" />
-      <HBox fx:id="phone" spacing="10" alignment="CENTER_LEFT" maxWidth="400" />
-      <HBox fx:id="address" spacing="10" alignment="CENTER_LEFT" maxWidth="400" />
-      <HBox fx:id="email" spacing="10" alignment="CENTER_LEFT" maxWidth="400" />
-      <HBox fx:id="attendance" spacing="10" alignment="CENTER_LEFT" maxWidth="400" />
-      <HBox fx:id="payment" spacing="10" alignment="CENTER_LEFT" maxWidth="400" />
-      <HBox fx:id="subject" spacing="10" alignment="CENTER_LEFT" maxWidth="400" />
-      <HBox fx:id="grade" spacing="10" alignment="CENTER_LEFT" maxWidth="400" />
-      <HBox fx:id="dateTimes" spacing="10" alignment="CENTER_LEFT" maxWidth="400">
-        <Label fx:id="dateTimeDescription" styleClass="cell_small_label" text="Upcoming lesson: " HBox.hgrow="NEVER" />
-        <Region HBox.hgrow="ALWAYS" />
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Phone:" styleClass="cell_small_label" />
+        <Label fx:id="phone" styleClass="cell_small_label" text="{$phone}" />
       </HBox>
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Address:" styleClass="cell_small_label" />
+        <Label fx:id="address" styleClass="cell_small_label" text="{$address}" />
+      </HBox>
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Email:" styleClass="cell_small_label" />
+        <Label fx:id="email" styleClass="cell_small_label" text="{$email}" />
+      </HBox>
+      <FlowPane fx:id="subjectWithGrade" />
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Attendance:" styleClass="cell_small_label" />
+        <Label fx:id="attendance" styleClass="cell_small_label" text="{$attendance}" />
+      </HBox>
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Current Monthly Fees:" styleClass="cell_small_label" />
+        <Label fx:id="payment" styleClass="cell_small_label" text="{$payment}" />
+      </HBox>
+      <FlowPane fx:id="dateTimes" />
     </VBox>
   </GridPane>
 </HBox>
