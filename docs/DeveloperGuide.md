@@ -216,7 +216,9 @@ The following activity diagram summarizes what happens when a tutor executes a f
 
 #### Implementation
 
-The `DateTime' class is set as additional data fields in `Person`.
+The view commmand in the Address book application is implemented using ViewWindow, where Logic#getFilteredPersonList() retrieves the list of students to be shown in the ViewWindow calendar.
+
+The `DateTime' class is set as additional data fields in `Person` which is used to map the students to their respective calendar dates.
 
 Step 1. The user launches the application for the first time.
 
