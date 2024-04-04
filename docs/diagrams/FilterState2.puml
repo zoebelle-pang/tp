@@ -8,7 +8,7 @@ title FilteredList
 
 package Predicates {
     class State1 as "<u>Model.PREDICATE_SHOW_ALL_PERSONS</u>"
-    class State2 as "<u>:GradeSubjectFilterPredicate</u>"
+    class State2 as "<u>:PaymentFilterPredicate</u>"
 }
 State1 -[hidden]right-> State2
 
