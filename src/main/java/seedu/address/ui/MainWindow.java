@@ -157,7 +157,6 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleHelp() {
         if (!helpWindow.isShowing()) {
-            viewWindow = new ViewWindow(logic);
             helpWindow.show();
         } else {
             helpWindow.focus();
