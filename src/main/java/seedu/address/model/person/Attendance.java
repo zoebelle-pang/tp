@@ -11,7 +11,7 @@ public class Attendance {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Attendance should only be 'Present' or 'Absent', and it should not be blank";
-    public static final String VALIDATION_REGEX = "(?i)(present|absent)";
+    public static final String VALIDATION_REGEX = "(?i)(present|absent)|-";
     public final String value;
 
     /**

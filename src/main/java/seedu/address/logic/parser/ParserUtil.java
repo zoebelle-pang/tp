@@ -102,36 +102,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String grade} into an {@code Grade}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code grade} is invalid.
-     */
-    public static Attendance parseAttendance(String attendance) throws ParseException {
-        requireNonNull(attendance);
-        String trimmedAttendance = attendance.trim();
-        if (!Attendance.isValidAttendance(trimmedAttendance)) {
-            throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
-        }
-        return new Attendance(trimmedAttendance);
-    }
-
-    /**
-     * Parses a {@code String grade} into an {@code Grade}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code grade} is invalid.
-     */
-    public static Payment parsePayment(String payment) throws ParseException {
-        requireNonNull(payment);
-        String trimmedPayment = payment.trim();
-        if (!Payment.isValidPayment(trimmedPayment)) {
-            throw new ParseException(Payment.MESSAGE_CONSTRAINTS);
-        }
-        return new Payment(trimmedPayment);
-    }
-
-    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -186,6 +156,36 @@ public class ParserUtil {
             throw new ParseException(Subject.MESSAGE_CONSTRAINTS);
         }
         return new Subject(trimmedSubject);
+    }
+
+    /**
+     * Parses a {@code String attendance} into an {@code Attendance}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attendance} is invalid.
+     */
+    public static Attendance parseAttendance(String attendance) throws ParseException {
+        requireNonNull(attendance);
+        String trimmedAttendance = attendance.trim();
+        if (!Attendance.isValidAttendance(trimmedAttendance)) {
+            throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
+        }
+        return new Attendance(trimmedAttendance);
+    }
+
+    /**
+     * Parses a {@code String payment} into an {@code Payment}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code payment} is invalid.
+     */
+    public static Payment parsePayment(String payment) throws ParseException {
+        requireNonNull(payment);
+        String trimmedPayment = payment.trim();
+        if (!Payment.isValidPayment(trimmedPayment)) {
+            throw new ParseException(Payment.MESSAGE_CONSTRAINTS);
+        }
+        return new Payment(trimmedPayment);
     }
 
     /**

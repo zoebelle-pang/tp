@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Payment {
     public static final String MESSAGE_CONSTRAINTS =
             "Payment should only be 'Paid' or 'Not Paid', and it should not be blank";
-    public static final String VALIDATION_REGEX = "(?i)(paid|not paid)";
+    public static final String VALIDATION_REGEX = "(?i)(paid|not paid)|-";
     public final String value;
 
     /**
