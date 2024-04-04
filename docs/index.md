@@ -21,8 +21,7 @@ title: TutorsGo
 
 * **Handle payment, attendance, etc**: Supports tracking of student's attendances, payments and more.
 
-* **Filter students by grade / subject**: 
-
+* **Filter students by grade / subject**: Take note of underperforming students by filtering according to relevant grade and/or subject.
 
 If you are interested in using TutorsGo, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
 
