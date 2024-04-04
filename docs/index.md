@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: landing
 title: TutorsGo
 ---
 
@@ -9,6 +9,9 @@ title: TutorsGo
 ![Ui](images/Ui.png)
 
 **TutorsGo is a desktop application for tutors managing their student details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
+
+## Create notes for students
+
 
 * If you are interested in using TutorsGo, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
 * If you are interested about developing TutorsGo, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
