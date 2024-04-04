@@ -81,7 +81,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [d/DA
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A student can have any number of tags (including 0)
 </div>
-* Grade follows NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F, -])
+* Grade follows NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
 * DateTime should be in yyyy-mm-dd hhmm
 
 Examples:

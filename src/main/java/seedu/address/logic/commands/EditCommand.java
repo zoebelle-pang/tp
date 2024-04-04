@@ -159,7 +159,7 @@ public class EditCommand extends Command {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder(this.getClass().getSimpleName())
                 .add("index", index)
                 .add("editPersonDescriptor", editPersonDescriptor)
                 .toString();

@@ -12,12 +12,8 @@ title: TutorsGo
 
 
 ## Features
-<div class="row">
-    <div class="column">**Create notes for students** : Keep track of lesson plans by creating session notes for individual students.</div>
-    <div class="column">**View student schedules** : View a calendar to never miss tutoring upcoming lessons.</div>
-    <div class="column">**Command history** : View and run past commands for a faster experience.</div>
-    <div class="column">**Handle payment, attendance, etc.** : Supports tracking of student's attendances, payments and more.</div>
-</div>
+
+**Create notes for students** : Keep track of lesson plans by creating session notes for individual students.
 
 **View student schedules** : View a calendar to never miss tutoring upcoming lessons.
 
@@ -25,7 +21,6 @@ title: TutorsGo
 
 **Handle payment, attendance, etc.** : Supports tracking of student's attendances, payments and more.
 
-### and more...
 
 * If you are interested in using TutorsGo, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
 * If you are interested about developing TutorsGo, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
