@@ -10,8 +10,22 @@ title: TutorsGo
 
 **TutorsGo is a desktop application for tutors managing their student details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
-* If you are interested in using TutorsGo, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing TutorsGo, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+
+## Features
+
+* **Create notes for students**: Keep track of lesson plans by creating session notes for individual students.
+
+* **View student schedules**: View a calendar to never miss tutoring upcoming lessons.
+
+* **Command history**: View and run past commands.
+
+* **Handle payment, attendance, etc**: Supports tracking of student's attendances, payments and more.
+
+* **Filter students by grade / subject**: Take note of underperforming students by filtering according to relevant grade and/or subject.
+
+If you are interested in using TutorsGo, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
+
+If you are interested about developing TutorsGo, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
 
 
 **Acknowledgements**
