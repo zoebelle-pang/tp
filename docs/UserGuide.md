@@ -178,14 +178,29 @@ Examples:
 
 ### Command history : `history`
 
-Shows previous successful command history. Enter [list](#listing-all-students--list) to view the student list. Ignores saving `history` command itself.
+There are two differing behaviours for this function.
+* Lists down the last 10 successful commands in an independent command history list.
+* Re-run commands based on the specified index.
+
+Enter [list](#listing-all-students--list) to return back to the student list.
+
+Format syntax and more information below.
 
 Format: `history [INDEX]`
 
-* Leaving whitespace / not entering index will list out the command history.
-* The index refers to the index number shown in the displayed command history list.
-* The index **must be a positive integer**, and should be within the list's boundaries.
-* Lists previous 10 commands by default.
+* Upon entering `history`:
+  * it will show a command history list, featuring a new, independent list showing previous successful commands.
+  * Leaving whitespace / not entering index will list out the command history.
+  * The command history list also ignores saving `history` command itself.
+  * Lists at most 10 successful commands.
+* Upon entering `history [INDEX]`:
+  * It will re-run the command that was specified by the index. 
+  * The index here refers to the index number shown in the command history list.
+  * The index **must be a positive integer**, and should be within the list's boundaries.
+  * The output message is determined by the re-run command. (i.e. `history [INDEX]` itself does not have any success message.)
+
+Example:
+
 
 ### Clearing all entries : `clear`
 
@@ -215,6 +230,14 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 ### Archiving data files `[coming in v2.0]`
 
 _Details coming soon ..._
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Planned Enhancements
+
+Team size: 4
+
+1. Improve readability of command history list: As of v1.3, the output of each command in the history is verbose, and introduces a lot of user-unfriendly code to the user. We plan to show only the command output that was typed by the user.
 
 --------------------------------------------------------------------------------------------------------------------
 

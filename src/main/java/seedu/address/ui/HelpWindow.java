@@ -36,7 +36,7 @@ public class HelpWindow extends UiPart<Stage> {
                     + "    - Categorise by Payment: 'payment pa/PAYMENT'\n"
                     + "       Usage: 'payment pa/Not Paid'\n\n"
                     + "    - Viewing Calendar : 'view'\n\n"
-                    + "    - Show previous successful commands : 'history'\n\n"
+                    + "    - Show previous successful commands : 'history [INDEX]'\n\n"
                     + "    - Clearing all entries : 'clear'\n\n"
                     + "    - Exiting the program : 'exit'\n\n"
                     + "You can view the complete user guide at "
