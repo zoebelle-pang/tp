@@ -60,12 +60,16 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `view`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
+* `GRADE` parameter input (i.e. `g/GRADE`) follows the NUS grading system. * Grade follows NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
+
+* 
+
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -81,7 +85,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [at/A
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A student can have any number of tags (including 0)
 </div>
-* Grade follows NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
+* Refer to [Features](#features) to view the accepted grade inputs.
 * DateTime should be in yyyy-mm-dd hhmm and a valid date
 * Attendance should be present or absent
 * Payment should be paid or not paid
@@ -135,14 +139,26 @@ Examples:
 
 ### Filter student by grade / subject :  `filter`
 
-Filters student who has the specified grade and/or subject.
+Filters and shows a list of students who has the specified grade and/or subject.
+
+Entering [list](#listing-all-students--list) will bring back the full address book.
+
+<div markdown="span" class="alert alert-primary">:bulb: **Note:**
+Filtering will always occur with the whole address book, regardless of what the user sees on the student list.
+</div>
 
 Format: `filter [g/GRADE] [s/SUBJECT]`
 
-* Search is case-sensitive.
-* Only full words will be matched.
+* Refer to [Features](#features) to view the accepted grade inputs.
+* Search is case-sensitive. (i.e. `filter s/Maths` will not match `filter g/maths`)
+* There can only be at most 1 grade and 1 subject when filtering.
+* Only full words will be matched. (i.e. `filter s/Maths` will not match `filter g/Math`)
 * The order of keywords does not matter.
 * At least one of the optional fields must be provided.
+
+Examples:
+* `filter g/A` return students with grade: `A`
+* `filter g/B+ s/Maths` returns students with grade: `B+` and subject: `Maths`
 
 ### Categorise student by payment :  `payment`
 
@@ -240,7 +256,7 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
-**Filter**| `filter [g/GRADE] [s/SUBJECT]`
+**Filter**| `filter [g/GRADE] [s/SUBJECT]`<br>e.g., `filter g/A s/English`
 **Payment**| `payment [pa/PAYMENT]`
 **View Schedule**|`view`
 **history**|`history`
