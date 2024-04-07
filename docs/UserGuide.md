@@ -62,7 +62,7 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 
 * `GRADE` parameter input (i.e. `g/GRADE`) follows the NUS grading system. * Grade follows NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
 
-* 
+* `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`. 
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
@@ -137,7 +137,7 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Filter student by grade / subject :  `filter`
+### Filter student by grade / subject : `filter`
 
 Filters and shows a list of students who has the specified grade and/or subject.
 
