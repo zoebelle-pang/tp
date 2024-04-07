@@ -188,18 +188,25 @@ Format syntax and more information below.
 
 Format: `history [INDEX]`
 
-* Upon entering `history`:
+* Upon entering `history` (i.e. leaving whitespace / not entering any index):
   * it will show a command history list, featuring a new, independent list showing previous successful commands.
-  * Leaving whitespace / not entering index will list out the command history.
   * The command history list also ignores saving `history` command itself.
   * Lists at most 10 successful commands.
+
 * Upon entering `history [INDEX]`:
   * It will re-run the command that was specified by the index. 
   * The index here refers to the index number shown in the command history list.
   * The index **must be a positive integer**, and should be within the list's boundaries.
   * The output message is determined by the re-run command. (i.e. `history [INDEX]` itself does not have any success message.)
 
-Example:
+Examples:
+
+* `history` returns a command history list.
+![history](images/commandHistory.png)
+
+* `history 1` runs the `list` command and returns the student list. It also outputs the success message of `list`.
+![history 1](images/commndHistory1.png)
+
 
 
 ### Clearing all entries : `clear`
@@ -226,10 +233,6 @@ AddressBook data are saved automatically as a JSON file `[JAR file location]/dat
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
-
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
