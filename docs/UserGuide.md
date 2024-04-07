@@ -158,7 +158,10 @@ Format: `filter [g/GRADE] [s/SUBJECT]`
 
 Examples:
 * `filter g/A` return students with grade: `A`
+![filter Grade A](images/filterGradeA.png)
+
 * `filter g/B+ s/Maths` returns students with grade: `B+` and subject: `Maths`
+![filter Grade A](images/filterGradeBPlusSubjectMaths.png)
 
 ### Categorise student by payment :  `payment`
 
