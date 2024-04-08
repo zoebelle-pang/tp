@@ -69,7 +69,7 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 
 ### Viewing help : `help`
 
-Shows a message explaining how to access the help page.
+Opens a help window summarising all commands available.
 
 ![help message](images/helpMessage.png)
 
