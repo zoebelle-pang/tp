@@ -241,6 +241,7 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 Team size: 4
 
 1. Improve readability of command history list: As of v1.3, the output of each command in the history is verbose, and introduces a lot of user-unfriendly code to the user. We plan to show only the command output that was typed by the user.
+2. Comprehensiveness of error messages: Error messages for list indexes <= 0 are inconsistent with positive indexes, even though the index is compliant with the command format. Examples of commands requiring indexes are `delete`, `edit`, `history`. We plan to ensure consistency with the error message so long as it is an index value.
 
 --------------------------------------------------------------------------------------------------------------------
 
