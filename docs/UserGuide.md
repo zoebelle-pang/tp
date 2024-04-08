@@ -85,7 +85,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [at/A
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A student can have any number of tags (including 0)
 </div>
-* Refer to [Features](#features) to view the accepted grade inputs.
+* Refer to [Features](#features) to view the accepted grade inputs, and the [Filter](#filter-student-by-grade--subject--filter) command for `GRADE` and `SUBJECT` constraints.
 * DateTime should be in yyyy-mm-dd hhmm and a valid date
 * Attendance should be present or absent
 * Payment should be paid or not paid
@@ -106,7 +106,7 @@ Edits an existing student in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
 
-* Refer to [Features](#features) to view the accepted grade inputs.
+* Refer to [Features](#features) to view the accepted grade inputs, and the [Filter](#filter-student-by-grade--subject--filter) command for `GRADE` and `SUBJECT` constraints.
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
