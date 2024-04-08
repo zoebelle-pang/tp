@@ -60,7 +60,7 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `view`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
-* `GRADE` parameter input (i.e. `g/GRADE`) follows the NUS grading system. * Grade follows NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
+* `GRADE` parameter input (i.e. `g/GRADE`) follows the NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
 
 * `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`. 
 
@@ -106,6 +106,7 @@ Edits an existing student in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
 
+* Refer to [Features](#features) to view the accepted grade inputs.
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
