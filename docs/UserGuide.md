@@ -100,7 +100,7 @@ Format: `list`
 
 Edits an existing student in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
 
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -205,7 +205,7 @@ Examples:
 ![history](images/commandHistory.png)
 
 * `history 1` runs the `list` command and returns the student list. It also outputs the success message of `list`.
-![history 1](images/commndHistory1.png)
+![history 1](images/commandHistory1.png)
 
 
 
@@ -241,6 +241,7 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 Team size: 4
 
 1. Improve readability of command history list: As of v1.3, the output of each command in the history is verbose, and introduces a lot of user-unfriendly code to the user. We plan to show only the command output that was typed by the user.
+2. Help Window improvements: 
 
 --------------------------------------------------------------------------------------------------------------------
 
