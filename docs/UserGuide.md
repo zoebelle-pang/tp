@@ -241,7 +241,6 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 Team size: 4
 
 1. Improve readability of command history list: As of v1.3, the output of each command in the history is verbose, and introduces a lot of user-unfriendly code to the user. We plan to show only the command output that was typed by the user.
-2. Help Window improvements: 
 
 --------------------------------------------------------------------------------------------------------------------
 
