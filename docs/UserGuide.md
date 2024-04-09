@@ -104,7 +104,7 @@ Format: `list`
 
 Edits an existing student in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
 
 * Refer to [Features](#features) to view the accepted grade inputs, and the [Filter](#filter-student-by-grade--subject--filter) command for `GRADE` and `SUBJECT` constraints.
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
@@ -198,14 +198,36 @@ Examples:
 
 ### Command history : `history`
 
-Shows previous successful command history. Enter [list](#listing-all-students--list) to view the student list. Ignores saving `history` command itself.
+There are two differing behaviours for this function.
+* Lists down the last 10 successful commands in an independent command history list.
+* Re-run commands based on the specified index.
+
+Enter [list](#listing-all-students--list) to return back to the student list.
+
+Format syntax and more information below.
 
 Format: `history [INDEX]`
 
-* Leaving whitespace / not entering index will list out the command history.
-* The index refers to the index number shown in the displayed command history list.
-* The index **must be a positive integer**, and should be within the list's boundaries.
-* Lists previous 10 commands by default.
+* Upon entering `history` (i.e. leaving whitespace / not entering any index):
+  * it will show a command history list, featuring a new, independent list showing previous successful commands.
+  * The command history list also ignores saving `history` command itself.
+  * Lists at most 10 successful commands.
+
+* Upon entering `history [INDEX]`:
+  * It will re-run the command that was specified by the index. 
+  * The index here refers to the index number shown in the command history list.
+  * The index **must be a positive integer**, and should be within the list's boundaries.
+  * The output message is determined by the re-run command. (i.e. `history [INDEX]` itself does not have any success message.)
+
+Examples:
+
+* `history` returns a command history list.
+![history](images/commandHistory.png)
+
+* `history 1` runs the `list` command and returns the student list. It also outputs the success message of `list`.
+![history 1](images/commandHistory1.png)
+
+
 
 ### Clearing all entries : `clear`
 
@@ -232,9 +254,14 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
-### Archiving data files `[coming in v2.0]`
+--------------------------------------------------------------------------------------------------------------------
 
-_Details coming soon ..._
+## Planned Enhancements
+
+Team size: 4
+
+1. Improve readability of command history list: As of v1.3, the output of each command in the history is verbose, and introduces a lot of user-unfriendly code to the user. We plan to show only the command output that was typed by the user.
+2. Comprehensiveness of error messages: Error messages for list indexes <= 0 are inconsistent with positive indexes, even though the index is compliant with the command format. Examples of commands requiring indexes are `delete`, `edit`, `history`. We plan to ensure consistency with the error message so long as it is an index value.
 
 --------------------------------------------------------------------------------------------------------------------
 

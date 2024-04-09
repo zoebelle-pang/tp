@@ -19,9 +19,9 @@ public class HistoryCommand extends Command {
     public static final String COMMAND_WORD = "history";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Lists command history. Runs the command when index is specified. \n"
+            + ": Lists command history. Runs the command when INDEX is specified. \n"
             + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Example: " + COMMAND_WORD + ", " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_HISTORY_SUCCESS = "Command History listed.";
 
