@@ -16,27 +16,29 @@ import seedu.address.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL =
-            "https://github.com/AY2324S2-CS2103-F15-2/tp/blob/master/docs/UserGuide.md";
+            "https://ay2324s2-cs2103-f15-2.github.io/tp/UserGuide.html";
     public static final String HELP_MESSAGE =
             "Here are the list of commands that are available for use: \n"
                     + "    - Viewing help : 'help'\n\n"
                     + "    - Adding a student: 'add'\n"
                     + "       Usage: 'add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] "
-                    + "[d/DATETIME] [at/ATTENDANCE] [pa/PAYMENT] [t/TAG]…'\n\n"
+                    + "[at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME] [t/TAG]…'\n\n"
                     + "    - Listing all persons : 'list'\n\n"
                     + "    - Editing a person : 'edit'\n"
-                    + "       Usage: 'edit INDEX n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] "
-                    + "[d/DATETIME] [at/ATTENDANCE] [pa/PAYMENT] [t/TAG]…'\n\n"
+                    + "       Usage: 'edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] "
+                    + "[at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME] [t/TAG]…'\n\n"
                     + "    - Locating persons by name: 'find'\n"
                     + "       Usage: 'find KEYWORD [MORE_KEYWORDS]'\n\n"
                     + "    - Deleting a person : 'delete'\n"
                     + "       Usage: 'delete INDEX'\n\n"
-                    + "    - Filter by Grade / Subject: 'filter [g/GRADE] [s/SUBJECT]'\n"
-                    + "       Usage: 'filter g/A s/Maths'\n\n"
-                    + "    - Categorise by Payment: 'payment pa/PAYMENT'\n"
-                    + "       Usage: 'payment pa/Not Paid'\n\n"
+                    + "    - Filtering by Grade / Subject: 'filter'\n"
+                    + "       Usage: 'filter [g/GRADE] [s/SUBJECT]'\n\n"
+                    + "    - Categorising by Payment: 'payment'\n"
+                    + "       Usage: 'payment pa/PAYMENT'\n\n"
                     + "    - Viewing Calendar : 'view'\n\n"
-                    + "    - Show previous successful commands : 'history'\n\n"
+                    + "    - Showing list of previously successful commands : 'history'\n\n"
+                    + "    - Executing command in command history list : 'history'\n"
+                    + "       Usage: 'history [INDEX]'\n\n"
                     + "    - Clearing all entries : 'clear'\n\n"
                     + "    - Exiting the program : 'exit'\n\n"
                     + "You can view the complete user guide at "

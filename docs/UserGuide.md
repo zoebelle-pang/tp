@@ -60,12 +60,18 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `view`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
+* `GRADE` parameter input (i.e. `g/GRADE`) follows the NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
+
+* `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`. 
+
+* `DateTime` parameter should be in yyyy-mm-dd hhmm and a valid date i.e. `2024-03-02 1800`
+
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Opens a help window summarising all commands available.
 
 ![help message](images/helpMessage.png)
 
@@ -82,11 +88,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [at/A
 A student can have any number of tags and datetimes (including 0)
 </div>
 
-* Grade follows NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
-* DateTime should be in yyyy-mm-dd hhmm and a valid date.
-* Attendance should be present or absent.
-* Payment should be paid or not paid.
-* Parameters should only include what is specified without any other characters.
+* Refer to [Features](#features) to view the accepted input parameters, parameters should only include what is specified without any other characters.
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800`
@@ -102,7 +104,7 @@ Format: `list`
 
 Edits an existing student in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
 
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -110,7 +112,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJEC
 * When editing tags, the existing tags of the student will be removed i.e adding of tags is not cumulative.
 * You can remove all the student’s tags by typing `t/` without specifying any tags after it.
 * You can remove all the student’s datetime by typing `d/` without specifying any datetime after it.
-* Parameters should only include what is specified without any other characters.
+* Refer to [Features](#features) to view the accepted input parameters, parameters should only include what is specified without any other characters.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
@@ -134,16 +136,31 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Filter student by grade / subject :  `filter`
+### Filter student by grade / subject : `filter`
 
-Filters student who has the specified grade and/or subject.
+Filters and shows a list of students who has the specified grade and/or subject.
+
+Entering [list](#listing-all-students--list) will bring back the full address book.
+
+<div markdown="span" class="alert alert-primary">:bulb: **Note:**
+Filtering will always occur with the whole address book, regardless of what the user sees on the student list.
+</div>
 
 Format: `filter [g/GRADE] [s/SUBJECT]`
 
-* Search is case-sensitive.
-* Only full words will be matched.
+* Refer to [Features](#features) to view the accepted grade inputs.
+* Search is case-sensitive. (i.e. `filter s/Maths` will not match `filter g/maths`)
+* There can only be at most 1 grade and 1 subject when filtering.
+* Only full words will be matched. (i.e. `filter s/Maths` will not match `filter g/Math`)
 * The order of keywords does not matter.
 * At least one of the optional fields must be provided.
+
+Examples:
+* `filter g/A` return students with grade: `A`
+![filter Grade A](images/filterGradeA.png)
+
+* `filter g/B+ s/Maths` returns students with grade: `B+` and subject: `Maths`
+![filter Grade A](images/filterGradeBPlusSubjectMaths.png)
 
 ### Categorise student by payment :  `payment`
 
@@ -179,14 +196,36 @@ Examples:
 
 ### Command history : `history`
 
-Shows previous successful command history. Enter [list](#listing-all-students--list) to view the student list. Ignores saving `history` command itself.
+There are two differing behaviours for this function.
+* Lists down the last 10 successful commands in an independent command history list.
+* Re-run commands based on the specified index.
+
+Enter [list](#listing-all-students--list) to return back to the student list.
+
+Format syntax and more information below.
 
 Format: `history [INDEX]`
 
-* Leaving whitespace / not entering index will list out the command history.
-* The index refers to the index number shown in the displayed command history list.
-* The index **must be a positive integer**, and should be within the list's boundaries.
-* Lists previous 10 commands by default.
+* Upon entering `history` (i.e. leaving whitespace / not entering any index):
+  * it will show a command history list, featuring a new, independent list showing previous successful commands.
+  * The command history list also ignores saving `history` command itself.
+  * Lists at most 10 successful commands.
+
+* Upon entering `history [INDEX]`:
+  * It will re-run the command that was specified by the index. 
+  * The index here refers to the index number shown in the command history list.
+  * The index **must be a positive integer**, and should be within the list's boundaries.
+  * The output message is determined by the re-run command. (i.e. `history [INDEX]` itself does not have any success message.)
+
+Examples:
+
+* `history` returns a command history list.
+![history](images/commandHistory.png)
+
+* `history 1` runs the `list` command and returns the student list. It also outputs the success message of `list`.
+![history 1](images/commandHistory1.png)
+
+
 
 ### Clearing all entries : `clear`
 
@@ -213,9 +252,14 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
-### Archiving data files `[coming in v2.0]`
+--------------------------------------------------------------------------------------------------------------------
 
-_Details coming soon ..._
+## Planned Enhancements
+
+Team size: 4
+
+1. Improve readability of command history list: As of v1.3, the output of each command in the history is verbose, and introduces a lot of user-unfriendly code to the user. We plan to show only the command output that was typed by the user.
+2. Comprehensiveness of error messages: Error messages for list indexes <= 0 are inconsistent with positive indexes, even though the index is compliant with the command format. Examples of commands requiring indexes are `delete`, `edit`, `history`. We plan to ensure consistency with the error message so long as it is an index value.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -241,7 +285,7 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
-**Filter**| `filter [g/GRADE] [s/SUBJECT]`
+**Filter**| `filter [g/GRADE] [s/SUBJECT]`<br>e.g., `filter g/A s/English`
 **Payment**| `payment [pa/PAYMENT]`
 **View Schedule**|`view`
 **history**|`history`
