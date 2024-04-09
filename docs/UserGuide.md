@@ -79,12 +79,14 @@ Adds a student to the address book.
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A student can have any number of tags (including 0)
+A student can have any number of tags and datetimes (including 0)
 </div>
+
 * Grade follows NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
-* DateTime should be in yyyy-mm-dd hhmm and a valid date
-* Attendance should be present or absent
-* Payment should be paid or not paid
+* DateTime should be in yyyy-mm-dd hhmm and a valid date.
+* Attendance should be present or absent.
+* Payment should be paid or not paid.
+* Parameters should only include what is specified without any other characters.
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800`
@@ -106,10 +108,9 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJEC
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the student will be removed i.e adding of tags is not cumulative.
-* You can remove all the student’s tags by typing `t/` without
-    specifying any tags after it.
-* * You can remove all the student’s datetime by typing `d/` without
-    specifying any datetime after it.
+* You can remove all the student’s tags by typing `t/` without specifying any tags after it.
+* You can remove all the student’s datetime by typing `d/` without specifying any datetime after it.
+* Parameters should only include what is specified without any other characters.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
