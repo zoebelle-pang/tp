@@ -64,6 +64,10 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 
 * `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`. 
 
+* `PAYMENT` should either be `Paid` or `Not Paid`
+
+* `ATTENDANCE` should either be `Present` or `Absent`
+
 * `DateTime` parameter should be in yyyy-mm-dd hhmm and a valid date i.e. `2024-03-02 1800`
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
@@ -164,7 +168,7 @@ Examples:
 
 ### Categorise student by payment :  `payment`
 
-Categorise students who has Paid or Not paid
+Categorise students who has `Paid` or `Not paid`
 
 Format: `payment [pa/PAYMENT]`
 
