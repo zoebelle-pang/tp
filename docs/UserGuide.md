@@ -64,6 +64,8 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 
 * `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`. 
 
+* `DateTime` parameter should be in yyyy-mm-dd hhmm and a valid date i.e. `2024-03-02 1800`
+
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
@@ -83,12 +85,10 @@ Adds a student to the address book.
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A student can have any number of tags (including 0)
+A student can have any number of tags and datetimes (including 0)
 </div>
-* Refer to [Features](#features) to view the accepted grade inputs, and the [Filter](#filter-student-by-grade--subject--filter) command for `GRADE` and `SUBJECT` constraints.
-* DateTime should be in yyyy-mm-dd hhmm and a valid date
-* Attendance should be present or absent
-* Payment should be paid or not paid
+
+* Refer to [Features](#features) to view the accepted input parameters, parameters should only include what is specified without any other characters.
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800`
@@ -106,15 +106,13 @@ Edits an existing student in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
 
-* Refer to [Features](#features) to view the accepted grade inputs, and the [Filter](#filter-student-by-grade--subject--filter) command for `GRADE` and `SUBJECT` constraints.
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the student will be removed i.e adding of tags is not cumulative.
-* You can remove all the student’s tags by typing `t/` without
-    specifying any tags after it.
-* * You can remove all the student’s datetime by typing `d/` without
-    specifying any datetime after it.
+* You can remove all the student’s tags by typing `t/` without specifying any tags after it.
+* You can remove all the student’s datetime by typing `d/` without specifying any datetime after it.
+* Refer to [Features](#features) to view the accepted input parameters, parameters should only include what is specified without any other characters.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
@@ -262,6 +260,8 @@ Team size: 4
 
 1. Improve readability of command history list: As of v1.3, the output of each command in the history is verbose, and introduces a lot of user-unfriendly code to the user. We plan to show only the command output that was typed by the user.
 2. Comprehensiveness of error messages: Error messages for list indexes <= 0 are inconsistent with positive indexes, even though the index is compliant with the command format. Examples of commands requiring indexes are `delete`, `edit`, `history`. We plan to ensure consistency with the error message so long as it is an index value.
+3. Improve UI when viewing monthly schedule: Resolving UI alignment of session information with calendar boxes when there is not enough sessions to fill up the calendar boxes.
+4. Accommodate 'extreme' inputs (e.g., a person name with 1000 characters) to prevent visibility issues.
 
 --------------------------------------------------------------------------------------------------------------------
 
