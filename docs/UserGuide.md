@@ -87,8 +87,8 @@ A student can have any number of tags (including 0)
 </div>
 * Refer to [Features](#features) to view the accepted grade inputs, and the [Filter](#filter-student-by-grade--subject--filter) command for `GRADE` and `SUBJECT` constraints.
 * DateTime should be in yyyy-mm-dd hhmm and a valid date
-* Attendance should be `present` or `absent`
-* Payment should be `paid` or `not paid`
+* Attendance should be present or absent
+* Payment should be paid or not paid
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800`
