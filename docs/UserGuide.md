@@ -5,6 +5,12 @@ title: User Guide
 
 TutorsGo is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TutorsGo can get your contact management tasks done faster than traditional GUI apps.
 
+## Why TutorsGo?
+
+* Calendar Integration: Seamlessly plan tutoring sessions with an integrated calendar view, enabling easy lookup of upcoming lessons and schedules.
+* Comprehensive Student Profiles: Access student grades, subjects, notes and more at your fingertips, allowing for easy lookup of everything you need to know about your student.
+* Payment Tracking Made Simple: Keep tabs on payments effortlessly, ensuring financial matters are organized and up-to-date.
+
 * Table of Contents
 {:toc}
 
@@ -265,7 +271,9 @@ Team size: 4
 1. Improve readability of command history list: As of v1.3, the output of each command in the history is verbose, and introduces a lot of user-unfriendly code to the user. We plan to show only the command output that was typed by the user.
 2. Comprehensiveness of error messages: Error messages for list indexes <= 0 are inconsistent with positive indexes, even though the index is compliant with the command format. Examples of commands requiring indexes are `delete`, `edit`, `history`. We plan to ensure consistency with the error message so long as it is an index value.
 3. Improve UI when viewing monthly schedule: Resolving UI alignment of session information with calendar boxes when there is not enough sessions to fill up the calendar boxes.
-4. Accommodate 'extreme' inputs (e.g., a person name with 1000 characters) to prevent visibility issues.
+4. Accommodate 'extreme' inputs (e.g., name/address/tag with 1000 characters, phone no. that are shorter than 3 and longer than 14 numbers) to prevent visibility issues.
+5. Improvements to accepted naming convention. (e.g. accept names with s/o, reject entries containing numerical characters)
+6. Distinguish identical names more adequately. (e.g. Andrew is set to Andrew(1) if identical entries already exists)
 
 --------------------------------------------------------------------------------------------------------------------
 
