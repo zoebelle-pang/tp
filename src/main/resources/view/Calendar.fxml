@@ -7,6 +7,8 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.Scene?>
 
+<!-- @@author {Hwww23}-reused -->
+<!-- Resued from https://gist.github.com/Da9el00/f4340927b8ba6941eb7562a3306e93b6 with minor modifications -->
 <fx:root resizable="True" title="View Schedule" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <scene>
         <Scene>
