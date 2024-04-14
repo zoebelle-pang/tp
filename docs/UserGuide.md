@@ -300,7 +300,7 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
 **Filter**| `filter [g/GRADE] [s/SUBJECT]`<br>e.g., `filter g/A s/English`
-**Payment**| `payment [pa/PAYMENT]`
+**Payment**| `payment [pa/PAYMENT]`<br>e.g., `payment pa/Paid`
 **View Schedule**|`view`
 **history**|`history`
 **List** | `list`                                                                                                                                                                
