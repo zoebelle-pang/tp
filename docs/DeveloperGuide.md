@@ -414,7 +414,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 1.  User requests to list students
 2.  TutorsGo shows a list of students
-3.  User requests to track stu who not paid in the list
+3.  User requests to track students who not paid in the list
 4.  TutorsGo shows all the student Not paid
 
     Use case ends.
