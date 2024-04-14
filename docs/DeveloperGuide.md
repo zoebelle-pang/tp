@@ -531,6 +531,24 @@ testers are expected to do more *exploratory* testing.
     1. Other incorrect filter commands to try: `filter g/x s/y` (where x and y are invalid inputs described in User Guide)<br>
        Expected: Nothing happens to the current list. Error details shown in the status message.
 
+### Categorise students by Payment Status
+
+1. To categorize students based on their payment status.
+
+    1. Prerequisites: List all students using the `list` command.
+
+    1. Test case: `payment pa/Paid`<br>
+       Expected: List of students who have paid their fees are returned. The status message displays the chosen payment status along with the number of students matching the payment status.
+
+    1. Test case: `payment pa/Not Paid`<br>
+       Expected: List of students who have not paid their fees are returned. The status message displays the chosen payment status along with the number of students matching the payment status.
+
+   1. Test case: `payment pa/-`<br>
+       Expected: List of students whose payment status is not specified or not ready are returned. The status message displays the chosen payment status along with the number of students matching the payment status.
+
+    1. Other incorrect payment commands to try: `payment pa/paying` (where "paying" or any other payment status other than "Paid" or "Not Paid" in case-insensitive format is considered invalid input).<br>
+       Expected: It will not categorize any students and display an error message in status message.
+
 ### View calendar
 
 1. Viewing the calendar to show monthly sessions.

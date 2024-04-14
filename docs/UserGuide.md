@@ -73,9 +73,9 @@ TutorsGo is a **desktop app for tutors to manage student details, optimized for 
 
 * At most 1 `GRADE` and 1 `SUBJECT` can be assigned per student.
 
-* `PAYMENT` should either be `Paid` or `Not Paid` with case-insensitive input. (i.e., `paid` or `PAID`)
+* `PAYMENT` should either be `Paid` or `Not Paid` with case-insensitive input. (i.e., `paid` or `PAID` are valid inputs)
 
-* `ATTENDANCE` should either be `Present` or `Absent` with case-insensitive input. (i.e., `present` or `PRESENT`)
+* `ATTENDANCE` should either be `Present` or `Absent` with case-insensitive input. (i.e., `present` or `PRESENT`are valid inputs)
 
 * `DateTime` parameter should be in yyyy-mm-dd hhmm and a valid date i.e. `2024-03-02 1800`
 
