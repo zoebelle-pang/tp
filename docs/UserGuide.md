@@ -105,7 +105,7 @@ A student can have any number of tags and datetimes (including 0)
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567`
+* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Betsy Avenue p/91234567`
 
 ### Listing all students : `list`
 
@@ -155,7 +155,7 @@ Filters and shows a list of students who has the specified grade and/or subject.
 
 Entering [list](#listing-all-students--list) will bring back the full address book.
 
-<div markdown="span" class="alert alert-primary">:bulb: **Note:**
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
 Filtering will always occur with the whole address book, regardless of what the user sees on the student list.
 </div>
 
@@ -216,6 +216,10 @@ There are two differing behaviours for this function.
 Enter [list](#listing-all-students--list) to return back to the student list.
 
 Format syntax and more information below.
+
+<div markdown="block" class="alert alert-info">:information_source: **Note:**
+Commands that are saved are not persistent. (i.e. The commands that are saved in one instance will be lost after closing the app.)
+</div>
 
 Format: `history [INDEX]`
 
