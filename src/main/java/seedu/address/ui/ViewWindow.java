@@ -114,6 +114,7 @@ public class ViewWindow extends UiPart<Stage> {
         drawCalendar();
     }
 
+    //Solution below adapted from https://gist.github.com/Da9el00/f4340927b8ba6941eb7562a3306e93b6
     private void drawCalendar() {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));

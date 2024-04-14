@@ -9,7 +9,7 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+* Generation and look of calendar adapted from Da9el00, [link to original project](https://gist.github.com/Da9el00/f4340927b8ba6941eb7562a3306e93b6)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -279,7 +279,6 @@ The following activity diagram summarizes what happens when a tutor executes a v
 
 ![ViewActivityDiagram](images/ViewActivityDiagram.png)
 
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -532,6 +531,14 @@ testers are expected to do more *exploratory* testing.
     1. Other incorrect filter commands to try: `filter g/x s/y` (where x and y are invalid inputs described in User Guide)<br>
        Expected: Nothing happens to the current list. Error details shown in the status message.
 
+### View calendar
+
+1. Viewing the calendar to show monthly sessions.
+
+    1. Prerequisites: List all students using the `list` command. At least one student in the list has a datetime. If none, copy `add n/Tom Jerry p/98765432 e/tom@example.com a/tom street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800` and change date to current month and year. <br>
+
+    1. Test case: `view` <br>
+       Expected: Calendar window opens and sessions show up in calendar box corresponding to information from the list.
 
 ### Check command history
 
@@ -553,3 +560,23 @@ testers are expected to do more *exploratory* testing.
 
     1. Other incorrect history commands to try: `history x` (where x is larger than the list size)<br>
        Expected: Nothing happens to the current list. Error details shown in the status message.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
+* Challenge faced: Coming up with a basic calendar fxml that is able to show the information required by the project 
+  * There were significant difficulties in trying to create a look for a calendar and attaching the information to the calendar while at the same time figuring out the logic to store the information needed and mapping them to the corresponding calendar boxes. With the reuse of the calendar fxml and generation of calendar boxes, it allowed for the difficulty level to drop from high to medium. All the attention could now be spent on figuring out the backend logic behind the calendar and making sure information is stored and shown accurately. This also gave attention to resolving bugs such as duplicate datetime which was also another challenge as it took a significant amount of time figuring out how information is stored and checked throughout the list and implementing the required methods while making sure all other functions continue working correctly.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enhancements**
+
+Team size: 4
+
+1. Improve readability of command history list: As of v1.3, the output of each command in the history is verbose, and introduces a lot of user-unfriendly code to the user. We plan to show only the command output that was typed by the user.
+2. Comprehensiveness of error messages: Error messages for list indexes <= 0 are inconsistent with positive indexes, even though the index is compliant with the command format. Examples of commands requiring indexes are `delete`, `edit`, `history`. We plan to ensure consistency with the error message so long as it is an index value.
+3. Improve UI when viewing monthly schedule: Resolving UI alignment of session information with calendar boxes when there is not enough sessions to fill up the calendar boxes.
+4. Accommodate 'extreme' inputs. (e.g. name/address/tag with 1000 characters to prevent visibility issues, phone no. that are shorter than 3 and longer than 14 numbers)
+5. Improvements to accepted naming convention. (e.g. accept names with s/o, reject entries containing numerical characters)
+6. Distinguish identical names more adequately. (e.g. Andrew is set to Andrew(1) if identical entries already exists)
+7. Improve preciseness of error messages to assist users more adequately in identifying issue. (e.g. m/ is not a valid parameter instead of showing the entire line of accepted command)
