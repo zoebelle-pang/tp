@@ -482,7 +482,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Adding a student
 
-1. Deleting a student while all students are being shown
+1. Adding a student to the address book.
 
     1. Prerequisites: None.
 
@@ -491,7 +491,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Editing a student
 
-1. Deleting a student while all students are being shown
+1. Editing a student while all students are being shown
 
     1. Prerequisites: List all students using the `list` command. Multiple students in the list.
 
