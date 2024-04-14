@@ -69,7 +69,7 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 
 * `GRADE` parameter input (i.e. `g/GRADE`) follows the NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
 
-* `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`. 
+* `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`.
 
 * At most 1 `GRADE` and 1 `SUBJECT` can be assigned per student.
 
@@ -229,7 +229,7 @@ Format: `history [INDEX]`
   * Lists at most 10 successful commands.
 
 * Upon entering `history [INDEX]`:
-  * It will re-run the command that was specified by the index. 
+  * It will re-run the command that was specified by the index.
   * The index here refers to the index number shown in the command history list.
   * The index **must be a positive integer**, and should be within the list's boundaries.
   * The output message is determined by the re-run command. (i.e. `history [INDEX]` itself does not have any success message.)
@@ -299,7 +299,7 @@ Team size: 4
 
 ## Command summary
 
-Action | Format, Examples                                                                                                                                                      
+Action | Format, Examples                                                                                                                                                 
 --------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` 
 **Clear** | `clear`                                                                                                                                                               

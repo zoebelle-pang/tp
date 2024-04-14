@@ -359,9 +359,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. Parameters given are invalid.
-    
+
     * 1a1. TutorsGo shows an error message.
-    
+
     Use case ends.
 
 
@@ -397,7 +397,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. Tutor enters the command he/she wants to run.
 
     * 1a1. TutorsGo shows output of command.
-  
+
     Use case ends.
 
 
@@ -525,14 +525,14 @@ testers are expected to do more *exploratory* testing.
 
     1. Test case: `filter g/B+ s/Mathematics`<br>
        Expected: Similar to previous.
-   
+
     1. Test case: `filter g/A`<br>
          Expected: No student returned from the list. Details of the filter and number of students returned shown in status message.
 
     1. Other incorrect filter commands to try: `filter g/x s/y` (where x and y are invalid inputs described in User Guide)<br>
        Expected: Nothing happens to the current list. Error details shown in the status message.
 
-       
+
 ### Check command history
 
 1. Checking command history on current instance of address book.
