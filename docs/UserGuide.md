@@ -183,7 +183,13 @@ Format: `payment [pa/PAYMENT]`
 
 * The search is case-insensitive. (i.e. `paid` will match `PAID`)
 * Only full words will be matched. (i.e. `Not paid` will not match `Not p`)
-* The displayed output matches the user's input exactly. (i.e., if the user inputs `PaId` it will be displayed as `PaId`)
+* The displayed output matches the user's input exactly. (i.e., if the user inputs `PaId` it will be 
+
+Examples
+* `payment pa/Paid` return students with payment: `Paid`
+  ![Payment Paid](images/PaymentPaid.png)
+* `payment pa/Not Paid` return students with payment: `Not Paid`
+  ![Payment Not Paid](images/PaymentNotPaid.png)
 
 ### View Schedule : `view`
 
