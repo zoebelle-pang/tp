@@ -580,3 +580,4 @@ Team size: 4
 5. Improvements to accepted naming convention. (e.g. accept names with s/o, reject entries containing numerical characters)
 6. Distinguish identical names more adequately. (e.g. Andrew is set to Andrew(1) if identical entries already exists)
 7. Improve preciseness of error messages to assist users more adequately in identifying issue. (e.g. m/ is not a valid parameter instead of showing the entire line of accepted command)
+8. Standardise all variations to the same status terms like "Paid", "Not Paid", "Present" and "Absent" for consistency
