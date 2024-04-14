@@ -5,16 +5,17 @@ title: User Guide
 
 TutorsGo is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TutorsGo can get your contact management tasks done faster than traditional GUI apps.
 
-## Why TutorsGo?
-
-* Calendar Integration: Seamlessly plan tutoring sessions with an integrated calendar view, enabling easy lookup of upcoming lessons and schedules.
-* Comprehensive Student Profiles: Access student grades, subjects, notes and more at your fingertips, allowing for easy lookup of everything you need to know about your student.
-* Payment Tracking Made Simple: Keep tabs on payments effortlessly, ensuring financial matters are organized and up-to-date.
 
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+
+## Why TutorsGo?
+
+* Calendar Integration: Seamlessly plan tutoring sessions with an integrated calendar view, enabling easy lookup of upcoming lessons and schedules.
+* Comprehensive Student Profiles: Access student grades, subjects, notes and more at your fingertips, allowing for easy lookup of everything you need to know about your student.
+* Payment Tracking Made Simple: Keep tabs on payments effortlessly, ensuring financial matters are organized and up-to-date.
 
 ## Quick start
 
@@ -69,6 +70,8 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 * `GRADE` parameter input (i.e. `g/GRADE`) follows the NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
 
 * `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`. 
+
+* At most 1 `GRADE` and 1 `SUBJECT` can be assigned per student.
 
 * `PAYMENT` should either be `Paid` or `Not Paid`
 
@@ -167,7 +170,7 @@ Format: `filter [g/GRADE] [s/SUBJECT]`
 
 Examples:
 * `filter g/A` return students with grade: `A`
-![filter Grade A](images/filterGradeA.png)
+![filter Grade A](images/FilterGradeA.png)
 
 * `filter g/B+ s/Maths` returns students with grade: `B+` and subject: `Maths`
 ![filter Grade A](images/filterGradeBPlusSubjectMaths.png)
@@ -232,7 +235,7 @@ Examples:
 * `history` returns a command history list.
 ![history](images/commandHistory.png)
 
-* `history 1` runs the `list` command and returns the student list. It also outputs the success message of `list`.
+* Upon running `history 1` from the result above, it runs the `list` command and returns the student list. It also outputs the success message of `list`.
 ![history 1](images/commandHistory1.png)
 
 

@@ -191,7 +191,7 @@ The following sequence diagram shows how a filter operation goes through the `Lo
 
 ![FilterSequenceDiagram-Logic](images/FilterSequenceDiagram-Logic.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `FilterCommand` and `GradeSubjectFilterPredicate` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `FilterCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </div>
 
@@ -208,8 +208,8 @@ The following activity diagram summarizes what happens when a tutor executes a f
 * Alternative 1: Filtered address book result can be saved, since in practice, there will only be a few combinations of filters.
   * Pros: Operation will be fast as the number of students increases.
   * Cons: More memory usage.
-* Alternative 2: Introduce command history to avoid typing long commands.
-  * Pros: Useful for the entire application, and would use less memory (e.g. storing the first 10 commands).
+* Alternative 2 (Implemented): Introduce command history to avoid typing long commands.
+  * Pros: Useful for the entire application, and would use less memory compared to alternative 1. (e.g. storing the first 10 commands).
   * Cons: Harder to implement.
 
 ### Payment Command
