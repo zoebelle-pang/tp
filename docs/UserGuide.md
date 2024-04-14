@@ -5,16 +5,17 @@ title: User Guide
 
 TutorsGo is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TutorsGo can get your contact management tasks done faster than traditional GUI apps.
 
-## Why TutorsGo?
-
-* Calendar Integration: Seamlessly plan tutoring sessions with an integrated calendar view, enabling easy lookup of upcoming lessons and schedules.
-* Comprehensive Student Profiles: Access student grades, subjects, notes and more at your fingertips, allowing for easy lookup of everything you need to know about your student.
-* Payment Tracking Made Simple: Keep tabs on payments effortlessly, ensuring financial matters are organized and up-to-date.
 
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+
+## Why TutorsGo?
+
+* Calendar Integration: Seamlessly plan tutoring sessions with an integrated calendar view, enabling easy lookup of upcoming lessons and schedules.
+* Comprehensive Student Profiles: Access student grades, subjects, notes and more at your fingertips, allowing for easy lookup of everything you need to know about your student.
+* Payment Tracking Made Simple: Keep tabs on payments effortlessly, ensuring financial matters are organized and up-to-date.
 
 ## Quick start
 
@@ -68,7 +69,9 @@ TutorsGo is a **desktop app for managing contacts, optimized for use via a Comma
 
 * `GRADE` parameter input (i.e. `g/GRADE`) follows the NUS grading system. (i.e. [A+, A, A-, B+, B, B-, C+, C, D+, D, F])
 
-* `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`. 
+* `GRADE` and `SUBJECT` are currently both independent fields, i.e. `GRADE` can be assigned despite not having a `SUBJECT`.
+
+* At most 1 `GRADE` and 1 `SUBJECT` can be assigned per student.
 
 * `PAYMENT` should either be `Paid` or `Not Paid`
 
@@ -102,7 +105,7 @@ A student can have any number of tags and datetimes (including 0)
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567`
+* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Betsy Avenue p/91234567`
 
 ### Listing all students : `list`
 
@@ -152,7 +155,7 @@ Filters and shows a list of students who has the specified grade and/or subject.
 
 Entering [list](#listing-all-students--list) will bring back the full address book.
 
-<div markdown="span" class="alert alert-primary">:bulb: **Note:**
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
 Filtering will always occur with the whole address book, regardless of what the user sees on the student list.
 </div>
 
@@ -167,7 +170,7 @@ Format: `filter [g/GRADE] [s/SUBJECT]`
 
 Examples:
 * `filter g/A` return students with grade: `A`
-![filter Grade A](images/filterGradeA.png)
+![filter Grade A](images/FilterGradeA.png)
 
 * `filter g/B+ s/Maths` returns students with grade: `B+` and subject: `Maths`
 ![filter Grade A](images/filterGradeBPlusSubjectMaths.png)
@@ -214,6 +217,10 @@ Enter [list](#listing-all-students--list) to return back to the student list.
 
 Format syntax and more information below.
 
+<div markdown="block" class="alert alert-info">:information_source: **Note:**
+Commands that are saved are not persistent. (i.e. The commands that are saved in one instance will be lost after closing the app.)
+</div>
+
 Format: `history [INDEX]`
 
 * Upon entering `history` (i.e. leaving whitespace / not entering any index):
@@ -222,7 +229,7 @@ Format: `history [INDEX]`
   * Lists at most 10 successful commands.
 
 * Upon entering `history [INDEX]`:
-  * It will re-run the command that was specified by the index. 
+  * It will re-run the command that was specified by the index.
   * The index here refers to the index number shown in the command history list.
   * The index **must be a positive integer**, and should be within the list's boundaries.
   * The output message is determined by the re-run command. (i.e. `history [INDEX]` itself does not have any success message.)
@@ -232,7 +239,7 @@ Examples:
 * `history` returns a command history list.
 ![history](images/commandHistory.png)
 
-* `history 1` runs the `list` command and returns the student list. It also outputs the success message of `list`.
+* Upon running `history 1` from the result above, it runs the `list` command and returns the student list. It also outputs the success message of `list`.
 ![history 1](images/commandHistory1.png)
 
 
@@ -292,7 +299,7 @@ Team size: 4
 
 ## Command summary
 
-Action | Format, Examples                                                                                                                                                      
+Action | Format, Examples                                                                                                                                                 
 --------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` 
 **Clear** | `clear`                                                                                                                                                               

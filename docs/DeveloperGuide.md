@@ -191,7 +191,7 @@ The following sequence diagram shows how a filter operation goes through the `Lo
 
 ![FilterSequenceDiagram-Logic](images/FilterSequenceDiagram-Logic.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `FilterCommand` and `GradeSubjectFilterPredicate` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `FilterCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </div>
 
@@ -208,8 +208,8 @@ The following activity diagram summarizes what happens when a tutor executes a f
 * Alternative 1: Filtered address book result can be saved, since in practice, there will only be a few combinations of filters.
   * Pros: Operation will be fast as the number of students increases.
   * Cons: More memory usage.
-* Alternative 2: Introduce command history to avoid typing long commands.
-  * Pros: Useful for the entire application, and would use less memory (e.g. storing the first 10 commands).
+* Alternative 2 (Implemented): Introduce command history to avoid typing long commands.
+  * Pros: Useful for the entire application, and would use less memory compared to alternative 1. (e.g. storing the first 10 commands).
   * Cons: Harder to implement.
 
 ### Payment Command
@@ -359,17 +359,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. Parameters given are invalid.
-    
+
     * 1a1. TutorsGo shows an error message.
-    
+
     Use case ends.
 
 
-**Use case: Adding a person**
+**Use case: Adding a student**
 
 **MSS**
 
-1.  Tutor adds a person
+1.  Tutor adds a student.
 2.  TutorsGo shows a success message.
 
     Use case ends.
@@ -397,7 +397,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. Tutor enters the command he/she wants to run.
 
     * 1a1. TutorsGo shows output of command.
-  
+
     Use case ends.
 
 
@@ -437,7 +437,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Should handle errors without crashing
 5.  Should be able to function in offline environments
@@ -480,29 +480,76 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Adding a student
 
-### Deleting a person
+1. Adding a student to the address book.
 
-1. Deleting a person while all persons are being shown
+    1. Prerequisites: None.
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800`<br>
+       Expected: Contact is added at the bottom of the list. Details of the newly added contact shown in the status message.
+
+### Editing a student
+
+1. Editing a student while all students are being shown
+
+    1. Prerequisites: List all students using the `list` command. Multiple students in the list.
+
+    1. Test case: `edit 1 p/91234567 e/johndoe@example.com`<br>
+       Expected: First contact's phone number and email address changed accordingly. Details of the edited contact shown in the status message.
+
+### Deleting a student
+
+1. Deleting a student while all students are being shown
+
+   1. Prerequisites: List all students using the `list` command. Multiple students in the list.
 
    1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
    1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
 
-### Saving data
+### Filtering a student by grade/subject
 
-1. Dealing with missing/corrupted data files
+1. Filtering a student in the address book.
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. Prerequisites: Multiple students in the list, with `GRADE` = `B+` and `SUBJECT` = `Mathematics` manually assigned to at least one student.
 
-1. _{ more test cases …​ }_
+    1. Test case: `filter g/B+`<br>
+       Expected: One or more students are returned from the list. Details of the filter and number of students returned shown in status message.
+
+    1. Test case: `filter g/B+ s/Mathematics`<br>
+       Expected: Similar to previous.
+
+    1. Test case: `filter g/A`<br>
+         Expected: No student returned from the list. Details of the filter and number of students returned shown in status message.
+
+    1. Other incorrect filter commands to try: `filter g/x s/y` (where x and y are invalid inputs described in User Guide)<br>
+       Expected: Nothing happens to the current list. Error details shown in the status message.
+
+
+### Check command history
+
+1. Checking command history on current instance of address book.
+
+    1. Prerequisites: At least one successful command ran besides `history` command itself.
+
+    1. Test case: `history`<br>
+       Expected: returns a new list of at least one successful command. Success message shown on status bar.
+
+### Re-run command from command history
+
+1. Re-run command history on current instance of address book.
+
+    1. Prerequisites: At least one successful command ran besides `history` command itself.
+
+    1. Test case: `history 1`<br>
+       Expected: The first successful command on the command history list will run again. Status message dependent on the first command.
+
+    1. Other incorrect history commands to try: `history x` (where x is larger than the list size)<br>
+       Expected: Nothing happens to the current list. Error details shown in the status message.
