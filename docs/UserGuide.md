@@ -281,7 +281,7 @@ Team size: 4
 4. Accommodate 'extreme' inputs (e.g., name/address/tag with 1000 characters, phone no. that are shorter than 3 and longer than 14 numbers) to prevent visibility issues.
 5. Improvements to accepted naming convention. (e.g. accept names with s/o, reject entries containing numerical characters)
 6. Distinguish identical names more adequately. (e.g. Andrew is set to Andrew(1) if identical entries already exists)
-7. Standardise all variations to the same status terms like "Paid", "Not Paid", "Present" and "Absent" for consistency and clarity.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
