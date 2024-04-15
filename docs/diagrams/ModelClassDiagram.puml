@@ -26,6 +26,7 @@ Class DateTime
 Class Attendance
 Class Payment
 Class CommandHistory
+Class Note
 
 Class I #FFFFFF
 }
@@ -56,12 +57,14 @@ Person *-> Subject
 Person *--> "*" DateTime
 Person *-> Attendance
 Person *-> Payment
+Person *-> Note
 
 Person -[hidden]up--> I
 Name -[hidden]-> Grade
 Phone -[hidden]-> Subject
 Address -[hidden]-> Attendance
 Email -[hidden]-> Payment
+Tag -[hidden]-> Note
 
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address
