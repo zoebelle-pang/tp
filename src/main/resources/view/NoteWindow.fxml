@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.stage.Stage?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
 
 <fx:root title="Note" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <icons>
@@ -19,19 +20,21 @@
                 <URL value="@NoteWindow.css" />
             </stylesheets>
 
-            <VBox alignment="CENTER_LEFT" fx:id="noteContainer">
-                <children>
-                    <Label fx:id="noteName" text="Label">
-                        <HBox.margin>
-                            <Insets right="5.0" />
-                        </HBox.margin>
-                    </Label>
-                    <Label fx:id="noteText" text="Label">
-                        <HBox.margin>
-                            <Insets right="5.0" />
-                        </HBox.margin>
-                    </Label>
-                </children>
+            <VBox alignment="CENTER_LEFT" fx:id="noteContainer" prefWidth="740" prefHeight="600">
+                <ScrollPane prefWidth="740" prefHeight="600" fx:id="noteScroll" styleClass="note-scroll-pane" hbarPolicy="NEVER" fitToWidth="true">
+                    <VBox>
+                        <Label fx:id="noteName" text="Label" wrapText="true">
+                            <HBox.margin>
+                                <Insets right="5.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Label fx:id="noteText" text="Label" wrapText="true">
+                            <HBox.margin>
+                                <Insets right="5.0" />
+                            </HBox.margin>
+                        </Label>
+                    </VBox>
+                </ScrollPane>
                 <opaqueInsets>
                     <Insets bottom="10.0" left="5.0" right="10.0" top="5.0" />
                 </opaqueInsets>

@@ -11,3 +11,15 @@
     -fx-text-fill: white;
 }
 
+.note-scroll-pane {
+    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background: derive(#1d1d1d, 20%);
+}
+
+.note-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.note-scroll-pane .content {
+    -fx-background-color: derive(#1d1d1d, 20%);
+}
