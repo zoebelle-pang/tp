@@ -18,7 +18,7 @@ public class PaymentCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Filters the address book based on the payment status.\n"
-            + "Parameters: [pa/PAYMENT]\n"
+            + "Parameters: pa/PAYMENT\n"
             + "Example: " + COMMAND_WORD + " pa/paid";
 
     public static final String MESSAGE_FILTER_ADDRESS_BOOK_SUCCESS = "Filtered address book by %2$s!\n";

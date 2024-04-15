@@ -414,7 +414,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 1.  User requests to list students
 2.  TutorsGo shows a list of students
-3.  User requests to track stu who not paid in the list
+3.  User requests to track students who not paid in the list
 4.  TutorsGo shows all the student Not paid
 
     Use case ends.
@@ -531,6 +531,24 @@ testers are expected to do more *exploratory* testing.
     1. Other incorrect filter commands to try: `filter g/x s/y` (where x and y are invalid inputs described in User Guide)<br>
        Expected: Nothing happens to the current list. Error details shown in the status message.
 
+### Categorise students by Payment Status
+
+1. To categorize students based on their payment status.
+
+    1. Prerequisites: List all students using the `list` command.
+
+    1. Test case: `payment pa/Paid`<br>
+       Expected: List of students who have paid their fees are returned. The status message displays the chosen payment status along with the number of students matching the payment status.
+
+    1. Test case: `payment pa/Not Paid`<br>
+       Expected: List of students who have not paid their fees are returned. The status message displays the chosen payment status along with the number of students matching the payment status.
+
+   1. Test case: `payment pa/-`<br>
+       Expected: List of students whose payment status is not specified or not ready are returned. The status message displays the chosen payment status along with the number of students matching the payment status.
+
+    1. Other incorrect payment commands to try: `payment pa/paying` (where "paying" or any other payment status other than "Paid" or "Not Paid" in case-insensitive format is considered invalid input).<br>
+       Expected: It will not categorize any students and display an error message in status message.
+
 ### View calendar
 
 1. Viewing the calendar to show monthly sessions.
@@ -580,3 +598,4 @@ Team size: 4
 5. Improvements to accepted naming convention. (e.g. accept names with s/o, reject entries containing numerical characters)
 6. Distinguish identical names more adequately. (e.g. Andrew is set to Andrew(1) if identical entries already exists)
 7. Improve preciseness of error messages to assist users more adequately in identifying issue. (e.g. m/ is not a valid parameter instead of showing the entire line of accepted command)
+8. Standardise all variations to the same status terms like "Paid", "Not Paid", "Present" and "Absent" for consistency
