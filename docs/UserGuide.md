@@ -73,6 +73,8 @@ TutorsGo is a **desktop app for tutors to manage student details, optimized for 
 
 * At most 1 `GRADE` and 1 `SUBJECT` can be assigned per student.
 
+* You can view a student's note by clicking on the Note button beside the student. The note can be edited using the `edit` command (refer to usage below for more information).
+
 * `PAYMENT` should either be `Paid` or `Not Paid`
 
 * `ATTENDANCE` should either be `Present` or `Absent`
@@ -95,7 +97,7 @@ Format: `help`
 
 Adds a student to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
+Format: `n/NAME p/PHONE e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [nt/NOTE] [d/DATETIME] [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A student can have any number of tags and datetimes (including 0)
@@ -117,7 +119,7 @@ Format: `list`
 
 Edits an existing student in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [d/DATETIME]…​ [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [nt/NOTE] [d/DATETIME]…​ [t/TAG]…​`
 
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -286,17 +288,17 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 ## Command summary
 
-Action | Format, Examples                                                                                                                                                 
---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` 
-**Clear** | `clear`                                                                                                                                                               
-**Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
-**Filter**| `filter [g/GRADE] [s/SUBJECT]`<br>e.g., `filter g/A s/English`
-**Payment**| `payment [pa/PAYMENT]`<br>e.g., `payment pa/Paid`
-**View Schedule**|`view`
-**history**|`history`
-**List** | `list`                                                                                                                                                                
-**Help** | `help`
-**Exit** | `exit`
+| Action            | Format, Examples                                                                                                                                                      |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear**         | `clear`                                                                                                                                                               |
+| **Delete**        | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
+| **Edit**          | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Find**          | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
+| **Filter**        | `filter [g/GRADE] [s/SUBJECT]`<br>e.g., `filter g/A s/English`                                                                                                        |
+| **Payment**       | `payment [pa/PAYMENT]`<br>e.g., `payment pa/Paid`                                                                                                                     |
+| **View Schedule** | `view`                                                                                                                                                                |
+| **history**       | `history`                                                                                                                                                             |
+| **List**          | `list`                                                                                                                                                                |
+| **Help**          | `help`                                                                                                                                                                |
+| **Exit**          | `exit`                                                                                                                                                                |
