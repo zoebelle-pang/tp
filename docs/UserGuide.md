@@ -181,7 +181,7 @@ Examples:
 
 Categorise students who has `Paid` or `Not paid`
 
-Format: `payment [pa/PAYMENT]`
+Format: `payment pa/PAYMENT`
 
 * The search is case-insensitive. (i.e. `paid` will match `PAID`)
 * Only full words will be matched. (i.e. `Not paid` will not match `Not p`)
