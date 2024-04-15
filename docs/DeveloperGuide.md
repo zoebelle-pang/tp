@@ -240,7 +240,7 @@ The following sequence diagram shows how a Payment filter operation goes through
 
 ![PaymentSequenceDiagram-Logic](images/PaymentSequenceDiagram-Logic.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** Similarly to filter command, the lifeline for `PaymentCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** Similar to the filter command, the lifeline for `PaymentCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </div>
 
