@@ -75,7 +75,9 @@ TutorsGo is a **desktop app for tutors to manage student details, optimized for 
 
 * You can view a student's note by clicking on the Note button beside the student. The note can be edited using the `edit` command (refer to usage below for more information).
 
-* `PAYMENT` should either be `Paid` or `Not Paid` with case-insensitive input. (i.e., `paid` or `PAID` are valid inputs)
+* `PAYMENT` should either be `Paid` or `Not Paid` with case-insensitive input or `-` for not available payment status. (i.e., `paid` or `PAID` are valid inputs)
+
+* `PAYMENT` parameter input (i.e. `pa/PAYMENT`), is displayed exactly as it appears in the output. (i.e., Input `PaId` will be displayed as `PaId`)
 
 * `ATTENDANCE` should either be `Present` or `Absent` with case-insensitive input. (i.e., `present` or `PRESENT`are valid inputs)
 
@@ -183,9 +185,10 @@ Categorise students who has `Paid` or `Not paid`
 
 Format: `payment pa/PAYMENT`
 
+* Refer to [Features](#features) to view the accepted payment status.
 * The search is case-insensitive. (i.e. `paid` will match `PAID`)
 * Only full words will be matched. (i.e. `Not paid` will not match `Not p`)
-* The displayed output matches the user's input exactly. (i.e., if the user inputs `PaId` it will be displayed as `PaId`)
+* Only one payment status can be used to categorise at a time
 
 Examples
 * `payment pa/Paid` return students with payment: `Paid`
@@ -295,17 +298,17 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 ## Command summary
 
-| Action            | Format, Examples                                                                                                                                                    |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| **Clear**         | `clear`                                                                                                                                                             |
-| **Delete**        | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                 |
-| **Edit**          | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                         |
-| **Find**          | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                          |
-| **Filter**        | `filter [g/GRADE] [s/SUBJECT]`<br>e.g., `filter g/A s/English`                                                                                                      |
-| **Payment**       | `payment pa/PAYMENT`<br>e.g., `payment pa/Paid`                                                                                                                     |
-| **View Schedule** | `view`                                                                                                                                                              |
-| **history**       | `history`                                                                                                                                                           |
-| **List**          | `list`                                                                                                                                                              |
-| **Help**          | `help`                                                                                                                                                              |
-| **Exit**          | `exit`                                                                                                                                                              |
+| Action            | Format, Examples                                                                                                                                                                                                                                                          |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [nt/NOTE] [d/DATETIME]…​ [t/TAG]…​` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/123, John street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800` |
+| **Clear**         | `clear`                                                                                                                                                                                                                                                                   |
+| **Delete**        | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                       |
+| **Edit**          | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GRADE] [s/SUBJECT] [at/ATTENDANCE] [pa/PAYMENT] [nt/NOTE] [d/DATETIME]…​ [t/TAG]…​`<br> e.g.,`edit 1 p/91234567 e/johndoe@example.com`                                                                                                                                               |
+| **Find**          | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                |
+| **Filter**        | `filter [g/GRADE] [s/SUBJECT]`<br>e.g., `filter g/A s/English`                                                                                                                                                                                                            |
+| **Payment**       | `payment pa/PAYMENT`<br>e.g., `payment pa/Paid`                                                                                                                                                                                                                           |
+| **View Schedule** | `view`                                                                                                                                                                                                                                                                    |
+| **history**       | `history`                                                                                                                                                                                                                                                                 |
+| **List**          | `list`                                                                                                                                                                                                                                                                    |
+| **Help**          | `help`                                                                                                                                                                                                                                                                    |
+| **Exit**          | `exit`                                                                                                                                                                                                                                                                    |
