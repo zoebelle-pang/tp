@@ -553,7 +553,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Viewing the calendar to show monthly sessions.
 
-    1. Prerequisites: List all students using the `list` command. At least one student in the list has a datetime. If none, copy `add n/Tom Jerry p/98765432 e/tom@example.com a/tom street, block 123, #01-01 g/B+ s/Mathematics d/2024-02-03 1800` and change date to current month and year. <br>
+    1. Prerequisites: List all students using the `list` command. At least one student in the list has a datetime. If none, copy `add n/Tom Jerry p/98765432 e/tom@example.com a/tom street, block 123, #01-01 d/2024-02-03 1800` and change date to current month and year. <br>
 
     1. Test case: `view` <br>
        Expected: Calendar window opens and sessions show up in calendar box corresponding to information from the list.
