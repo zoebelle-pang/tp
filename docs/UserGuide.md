@@ -75,7 +75,7 @@ TutorsGo is a **desktop app for tutors to manage student details, optimized for 
 
 * You can view a student's note by clicking on the Note button beside the student. The note can be edited using the `edit` command (refer to usage below for more information).
 
-* `PAYMENT` should either be `Paid` or `Not Paid` with case-insensitive input or `-` for unavailable payment status. (i.e., `paid` or `PAID` are valid inputs)
+* `PAYMENT` should either be `Paid` or `Not Paid` with case-insensitive input or `-` for not available payment status. (i.e., `paid` or `PAID` are valid inputs)
 
 * `PAYMENT` parameter input (i.e. `pa/PAYMENT`), is displayed exactly as it appears in the output. (i.e., Input `PaId` will be displayed as `PaId`)
 
