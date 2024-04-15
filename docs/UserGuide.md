@@ -73,9 +73,9 @@ TutorsGo is a **desktop app for tutors to manage student details, optimized for 
 
 * At most 1 `GRADE` and 1 `SUBJECT` can be assigned per student.
 
-* `PAYMENT` should either be `Paid` or `Not Paid`
+* `PAYMENT` should either be `Paid` or `Not Paid` with case-insensitive input. (i.e., `paid` or `PAID` are valid inputs)
 
-* `ATTENDANCE` should either be `Present` or `Absent`
+* `ATTENDANCE` should either be `Present` or `Absent` with case-insensitive input. (i.e., `present` or `PRESENT`are valid inputs)
 
 * `DateTime` parameter should be in yyyy-mm-dd hhmm and a valid date i.e. `2024-03-02 1800`
 
@@ -181,8 +181,15 @@ Categorise students who has `Paid` or `Not paid`
 
 Format: `payment [pa/PAYMENT]`
 
-* The search is case-insensitive. e.g `paid` will match `PAID`
-* Only full words will be matched e.g. `Not paid` will not match `Not p`
+* The search is case-insensitive. (i.e. `paid` will match `PAID`)
+* Only full words will be matched. (i.e. `Not paid` will not match `Not p`)
+* The displayed output matches the user's input exactly. (i.e., if the user inputs `PaId` it will be displayed as `PaId`)
+
+Examples
+* `payment pa/Paid` return students with payment: `Paid`
+  ![Payment Paid](images/PaymentPaid.png)
+* `payment pa/Not Paid` return students with payment: `Not Paid`
+  ![Payment Not Paid](images/PaymentNotPaid.png)
 
 ### View Schedule : `view`
 
@@ -294,7 +301,7 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
 **Filter**| `filter [g/GRADE] [s/SUBJECT]`<br>e.g., `filter g/A s/English`
-**Payment**| `payment [pa/PAYMENT]`<br>e.g., `payment pa/Paid`
+**Payment**| `payment pa/PAYMENT`<br>e.g., `payment pa/Paid`
 **View Schedule**|`view`
 **history**|`history`
 **List** | `list`                                                                                                                                                                
