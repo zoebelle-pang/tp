@@ -223,13 +223,13 @@ The application allows updating the payment predicate using the Model#updateFilt
 
 The Payment class is added as an additional data field in the Person class.
 * When unspecified:
-    * `Payment()` equals to `Payment("-")` (i.e. "-" will be shown when there is no payment for the student.)
+    * `Payment()` equals to `Payment("-")` (i.e. "-" will be shown when the payment status is not available for the student.")
 
 Given below is an example usage scenario and what the predicate is at each step.
 
 Step 1. The user launches the application for the first time. The student's contacts in the form of FilteredList will be shown, where the predicate states that the payment condition is true for all.
 
-Step 2. The user executes `Payment pa/paid` command to get all students in the `FilteredList` who has an "Paid". The `payment` command creates `PaymentFilterPredicate`, and calls `Model#updateFilteredPersonList(predicate)`, updating the list to show students that has "Paid".
+Step 2. The user executes `payment pa/paid` command to get all students in the `FilteredList` who has an "Paid". The `payment` command creates `PaymentFilterPredicate`, and calls `Model#updateFilteredPersonList(predicate)`, updating the list to show students that has "Paid".
 
 ![PaymentFilterState](images/FilterState2-PaymentFilteredList.png)
 
@@ -322,12 +322,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *` | tutor            | edit details of a student                   | update whenever their contact details changes                           |
 | `* * *` | tutor            | edit my own details                         | update whenever my contact details changes                              |
 | `* *`   | tutor            | filter my students by subject / grade level | tailor my teaching approach according to students' needs                |
-| `* *`   | tutor            | view all outstanding payments               | remind their parents of their tuition fees                              |
+| `* *`   | tutor            | categorise my students by payment status    | remind their parents of their tuition fees                              |
 | `* *`   | tutor            | view my schedules                           | get to the appointed lessons on time                                    |
 | `*`     | tutor            | track attendence of students                | monitor their commitment to tutoring sessions                           |
 | `*`     | tutor            | reschedule sessions with my students        | accomodate changes in availability                                      |
 | `*`     | tutor            | make session notes for students             | keep track of lesson details                                            |
-| `*`     | tech-savvy tutor | have access to a command history             | so that I can eliminate typing long commands more than once.            |
+| `*`     | tech-savvy tutor | have access to a command history            | so that I can eliminate typing long commands more than once.            |
 
 *{More to be added}*
 
@@ -547,7 +547,7 @@ testers are expected to do more *exploratory* testing.
        Expected: List of students whose payment status is not specified or not ready are returned. The status message displays the chosen payment status along with the number of students matching the payment status.
 
     1. Other incorrect payment commands to try: `payment pa/paying` (where "paying" or any other payment status other than "Paid" or "Not Paid" in case-insensitive format is considered invalid input).<br>
-       Expected: It will not categorize any students and display an error message in status message.
+       Expected: It will not categorize any students and list remain unchanged. It will also display an error message in status message.
 
 ### View calendar
 
