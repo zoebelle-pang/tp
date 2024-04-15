@@ -246,7 +246,7 @@ The following sequence diagram shows how a Payment filter operation goes through
 
 The following activity diagram summarizes what happens when a tutor executes a filter command.
 
-![PaymentActivityDiagram.png](images%2FPaymentActivityDiagram.png)![PaymentActivityDiagram](images/PaymentActivityDiagram.png![PaymentActivityDiagram.png](images%2FPaymentActivityDiagram.png))
+![PaymentActivityDiagram.png](images%2FPaymentActivityDiagram.png)
 
 ### View Command
 
