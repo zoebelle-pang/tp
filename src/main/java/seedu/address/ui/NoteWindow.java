@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
@@ -18,6 +19,8 @@ public class NoteWindow extends UiPart<Stage> {
     @FXML
     private VBox noteContainer;
     @FXML
+    private ScrollPane scrollPane;
+    @FXML
     private Label noteName;
     @FXML
     private Label noteText;
@@ -31,8 +34,6 @@ public class NoteWindow extends UiPart<Stage> {
         super(FXML, root);
         noteName.setText(String.format("%s's note\n\n", person.getName().fullName));
         noteText.setText(person.getNote().value);
-        noteText.setMinWidth(400);
-        noteText.setMaxWidth(400);
         noteText.setWrapText(true);
     }
 

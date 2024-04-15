@@ -63,7 +63,6 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.person = person;
         Stage stage = new Stage();
-        stage.setMaxWidth(400);
         this.noteWindow = new NoteWindow(stage, person);
 
         id.setText(displayedIndex + ". ");
